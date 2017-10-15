@@ -1,0 +1,3 @@
+const myNewPackage = require('./')
+
+myNewPackage()

@@ -1,0 +1,26 @@
+{
+  "name": "erotic",
+  "version": "0.1.0",
+  "description": "A new package created with mnp",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "zoroaster test/spec",
+    "test-watch": "zoroaster test/spec --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Sobesednik/erotic.git"
+  },
+  "keywords": [
+    "mnp"
+  ],
+  "author": "Anton <anton@sobesednik.media>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Sobesednik/erotic/issues"
+  },
+  "homepage": "https://github.com/Sobesednik/erotic#readme",
+  "devDependencies": {
+    "zoroaster": "0.4.4"
+  }
+}
