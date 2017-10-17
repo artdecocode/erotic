@@ -21,6 +21,9 @@
   },
   "homepage": "https://github.com/Sobesednik/erotic#readme",
   "devDependencies": {
-    "zoroaster": "0.4.4"
+    "zoroaster": "0.4.6"
+  },
+  "dependencies": {
+    "clean-stack": "1.3.0"
   }
 }

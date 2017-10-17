@@ -1,4 +1,4 @@
-## 0.1.0 (22 May)
+## 0.1.0 (17 October 2017)
 
-- Create `my-new-package`: a package created with `mnp`
+- Create `erotic`: a package created with `mnp`
 - [repo]: `test`, `src`
