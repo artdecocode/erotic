@@ -1,24 +1,18 @@
-const cleanStack = require('clean-stack')
+const {
+    getEntryStack, getCallerFromArguments,
+} = require('./lib')
+const { makeCallback } = require('./callback')
 
 /**
- * Create a synchronous handle for a possible async error.
- * When the async error is caught, call error(message) method on the
- * returned object to get an error which stack trace starts when
- * the handle was created.
+ * Call this method to get a function that will return an error with a stack
+ * trace starting at the line in code when the call was made.
  */
 function erotic() {
     const error = new Error()
-    const stack = error.stack.split('\n')
-    const rest = stack.splice(2).join('\n')
+    const caller = getCallerFromArguments(arguments)
+    const entryStack = getEntryStack(error.stack)
 
-
-    return (message) => {
-        const callee = new Error().stack.split('\n', 3)[2]
-        const msg = `Error: ${message}\n${callee}\n${rest}`
-        error.message = message
-        error.stack = cleanStack(msg)
-        return error
-    }
+    return makeCallback(caller, entryStack)
 }
 
 module.exports = erotic

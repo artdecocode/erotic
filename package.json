@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "test": "zoroaster test/spec",
-    "test-watch": "zoroaster test/spec --watch"
+    "test-watch": "zoroaster test/spec --watch",
+    "debug": "ZOROASTER_TIMEOUT=99999 node --inspect=5858 node_modules/.bin/zoroaster test/spec/ --watch"
   },
   "repository": {
     "type": "git",

@@ -1,19 +1,54 @@
 # erotic
 
-`erotic` is a Node.js package to capture asynchronous stack traces.
+[`erotic`][1] is a Node.js module to capture asynchronous stack traces.
 
-## `erotic(): function(): Error`
+You create a `callback` function by calling `erotic()` at the point where you
+want you stack trace to start from. Then, in an asynchronous function you call
+this the callback either with a `message` string or an `Error` object. The stack
+trace will be updated to include the point of entry.
 
-Call `erotic` in the synchronous part of your function execution to get a
-function which can be used to construct an error with captured stack trace.
+Start using [`erotic` npm package][1] today to get the benefits of more
+user-friendly error messages from asynchronous function calls.
+
+## API
+
+The package's API consists of 2 functions: a constructor of a callback, which
+should be used when the error stack trace should start, and the callback
+which should be called in the asynchronous function.
+
+### `erotic`
+
+> `function(): callback`
+
+Constructor for the error, where the stack trace will begin from.
 
 ```js
-const erotic = require('erotic')
+import erotic from 'erotic'
 
 function example() {
-    const err = erotic()
+    const callback = erotic()
+}
+
+example()
+```
+
+### `callback`
+
+> `function(messageOrError: (string|Error)): Error`
+
+The callback to get the error with the stack which includes the constructor
+line.
+
+```js
+import erotic from 'erotic'
+
+function example() {
+    const callback = erotic()
     setTimeout(() => {
-        throw err('some error')
+        const error = callback('some error')
+        // or
+        // const error = callback(new Error('some error'))
+        throw error
     }, 10)
 }
 
@@ -31,8 +66,40 @@ Error: some error
     at Object.<anonymous> (/example/erotic.js:10:1)
 ```
 
-If `erotic` is not used, the entry point to the async execution will not be
-recorded in the error stack:
+## Using with Promises
+
+One of the most common use cases is with promises. You can call `erotic`
+function at your entry line, and reject a promise with an error created with
+the callback.
+
+```js
+async function exampleWithPromise() {
+    const err = erotic()
+    await new Promise((_, reject) => {
+        setTimeout(() => {
+            const error = err('promise timeout error')
+            reject(error)
+        }, 10)
+    })
+}
+
+(async () => {
+    await exampleWithPromise()
+})()
+```
+
+```fs
+Error: promise timeout error
+    at Timeout.setTimeout [as _onTimeout] (/Users/anton/Sobes/erotic/example/erotic.js:30:27)
+    at exampleWithPromise (/Users/anton/Sobes/erotic/example/erotic.js:27:17)
+    at __dirname (/Users/anton/Sobes/erotic/example/erotic.js:56:11)
+    at Object.<anonymous> (/Users/anton/Sobes/erotic/example/erotic.js:57:3)
+```
+
+## Motivation
+
+If `erotic` is not used, then the entry point to the async execution will not be
+recorded in the error stack, and Node internals are exposed:
 
 ```js
 function example() {
@@ -55,5 +122,7 @@ Error: some error
 ```
 
 ---
+
+[1]: https://npmjs.org/packages/erotic
 
 (c) [Sobesednik-Media](https://sobes.io) 2017
