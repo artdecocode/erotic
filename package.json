@@ -15,7 +15,7 @@
   },
   "files": [
     "src",
-    "es5"
+    "es5/src"
   ],
   "repository": {
     "type": "git",
