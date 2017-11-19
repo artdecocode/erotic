@@ -13,6 +13,10 @@
     "build-test": "babel test --out-dir es5/test",
     "build": "run-s build-src build-test"
   },
+  "files": [
+    "src",
+    "es5"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/Sobesednik/erotic.git"
