@@ -1,6 +1,6 @@
 {
   "name": "erotic",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Capture synchronous part of the error stack in asynchronous functions",
   "main": "src/index.js",
   "scripts": {
