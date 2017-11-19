@@ -33,9 +33,8 @@ function makeCallback(entryCaller, entryStack) {
                 [
                     calleeStackLine,
                     entryStack,
-                ],
-            )
-            .join('\n')
+                ]
+            ).join('\n')
         const stack = cleanStack(stackMessage)
         const properties = { message, stack }
         return Object.assign(new Error(), isError ?

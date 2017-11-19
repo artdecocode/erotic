@@ -36,7 +36,7 @@ async function exampleWithPromise() {
 async function promise() {
     await new Promise((_, reject) => {
         setTimeout(() => {
-            const error = new Error('promise timeout error')
+            const error = new Error('native promise timeout error')
             reject(error)
         }, 10)
     })

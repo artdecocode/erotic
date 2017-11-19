@@ -1,4 +1,6 @@
-# erotic
+<a href="https://npmjs.org/packages/erotic"><img align="right" src="./logo.jpg" width="225" alt="Erotic" />
+
+# erotic</a>
 
 [`erotic`][1] is a Node.js module to capture asynchronous stack traces.
 
@@ -9,6 +11,15 @@ trace will be updated to include the point of entry.
 
 Start using [`erotic` npm package][1] today to get the benefits of more
 user-friendly error messages from asynchronous function calls.
+
+## ES5
+
+The package uses some newer language features. For your convenience, it's been
+transpiled to be compatible with Node 4. You can use the following snippet.
+
+```js
+const erotic = require('erotic/es5/src/')
+```
 
 ## API
 
@@ -123,6 +134,10 @@ Error: some error
 
 ---
 
-[1]: https://npmjs.org/packages/erotic
+
+Logo: [Thornton’s Temple of Flora][2]
 
 (c) [Sobesednik-Media](https://sobes.io) 2017
+
+[1]: https://npmjs.org/packages/erotic
+[2]: https://publicdomainreview.org/2015/03/11/sex-and-science-in-robert-thorntons-temple-of-flora/

@@ -1,3 +1,5 @@
+const { nodeLt } = require('./semver')
+
 // simulating same process of creating an error in the erotic package
 function eroticError(name, code) {
     const error = new Error(name)
@@ -7,6 +9,12 @@ function eroticError(name, code) {
 
 function getStackArray(stack) {
     return stack.split('\n')
+}
+
+function removeLineNumbers(stack) {
+    const re = / \(.*\)$/gm
+    const s = stack.replace(re, '')
+    return s
 }
 
 async function rejectTimeout(
@@ -30,24 +38,28 @@ async function getTimeoutError() {
     }
 }
 
-async function StackContext() {
+function StackContext() {
     const error = eroticError('context error', 'TEST_ERROR')
-    const asyncError = await getTimeoutError()
-    const [
-        { stack },
-        { stack: asyncStack },
-    ] = [error, asyncError]
-    const stackArray = getStackArray(stack)
-    const asyncStackArray = getStackArray(asyncStack)
+    return getTimeoutError()
+        .then((asyncError) => {
+            const [
+                { stack },
+                { stack: asyncStack },
+            ] = [error, asyncError]
+            const stackArray = getStackArray(stack)
+            const asyncStackArray = getStackArray(asyncStack)
 
-    Object.assign(this, {
-        error,
-        stack,
-        stackArray,
-        asyncError,
-        asyncStack,
-        asyncStackArray,
-    })
+            Object.assign(this, {
+                error,
+                stack,
+                stackArray,
+                asyncError,
+                asyncStack,
+                asyncStackArray,
+                removeLineNumbers,
+                nodeLt,
+            })
+        })
 }
 
 module.exports = StackContext

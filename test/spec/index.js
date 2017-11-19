@@ -1,8 +1,10 @@
 const assert = require('assert')
+const context = require('../context/StackContext')
 const erotic = require('../../src/')
 const { doesNotThrow, equal } = assert
 
 const eroticTestSuite = {
+    context,
     'should be a function'() {
         equal(typeof erotic, 'function')
     },
@@ -11,34 +13,35 @@ const eroticTestSuite = {
             erotic()
         })
     },
-    async 'should return error stack'() {
+    'should return error stack'({ removeLineNumbers, nodeLt }) {
         const e = erotic()
         const message = 'error-message'
-        try {
-            await new Promise((_, reject) => {
-                setTimeout(() => {
-                    const eroticError = e(message)
-                    reject(eroticError)
-                }, 1)
-            })
-        }
-        catch({ stack }) {
+        return new Promise((_, reject) => {
+            setTimeout(function () {
+                const eroticError = e(message)
+                reject(eroticError)
+            }, 1)
+        }).catch(({ stack }) => {
+            const s = removeLineNumbers(stack)
+            // Timeout constructor name from 5.9.1
+            // https://github.com/nodejs/node/pull/5793
             const expected = `Error: ${message}
-    at Timeout.setTimeout [as _onTimeout] (${__dirname}/index.js:20:41)
-    at should return error stack (${__dirname}/index.js:15:19)`
-            assert(stack.startsWith(expected))
-        }
+    at ${nodeLt('v5.9.1') ? 'null' : 'Timeout'}._onTimeout
+    at should return error stack`
+            assert(s.startsWith(expected))
+        })
     },
-    'should return error stack with sync function'() {
+    'should return error stack with sync function'({ removeLineNumbers }) {
         const makeError = erotic()
         const message = 'error-message'
         const eroticError = makeError(message)
         try {
             throw eroticError
         } catch ({ stack }) {
+            const s = removeLineNumbers(stack)
             const expected = `Error: ${message}
-    at should return error stack with sync function (${__dirname}/index.js:33:27)`
-            assert(stack.startsWith(expected))
+    at should return error stack with sync function`
+            assert(s.startsWith(expected))
         }
     },
     async 'should extend passed error object'() {
@@ -52,9 +55,9 @@ const eroticTestSuite = {
                     err.code = code
                     const eroticError = er(err)
                     reject(eroticError)
-                }, 10)
+                }, 1)
             })
-        } catch(error) {
+        } catch (error) {
             assert(error instanceof Error)
             equal(error.message, message)
             equal(error.code, code)
