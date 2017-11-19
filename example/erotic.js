@@ -6,7 +6,6 @@ process
     .on('unhandledRejection', printError)
     .on('uncaughtException', printError)
 
-
 function example() {
     const err = erotic()
     setTimeout(() => {
