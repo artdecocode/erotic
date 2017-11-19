@@ -1,12 +1,22 @@
 {
   "name": "erotic",
   "version": "0.1.0",
-  "description": "A new package created with mnp",
+  "description": "Capture synchronous part of the error stack in asynchronous functions",
   "main": "src/index.js",
   "scripts": {
     "test": "zoroaster test/spec",
-    "test-watch": "zoroaster test/spec --watch"
+    "test-es5": "zoroaster es5/test/spec",
+    "test-watch": "zoroaster test/spec --watch",
+    "debug": "ZOROASTER_TIMEOUT=99999 node --inspect=5858 node_modules/.bin/zoroaster test/spec/ --watch",
+    "debug-es5": "ZOROASTER_TIMEOUT=99999 node --debug=5858 node_modules/.bin/zoroaster es5/test/spec/ --watch",
+    "build-src": "babel src --out-dir es5/src",
+    "build-test": "babel test --out-dir es5/test",
+    "build": "run-s build-src build-test"
   },
+  "files": [
+    "src",
+    "es5"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/Sobesednik/erotic.git"
@@ -21,6 +31,10 @@
   },
   "homepage": "https://github.com/Sobesednik/erotic#readme",
   "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-preset-env": "1.6.1",
+    "fast-async": "6.3.0",
+    "npm-run-all": "4.1.2",
     "zoroaster": "0.4.6"
   },
   "dependencies": {
