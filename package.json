@@ -15,7 +15,6 @@
     "build": "babel src --out-dir build"
   },
   "files": [
-    "src",
     "build",
     "es5/src",
     "es5/index.js"

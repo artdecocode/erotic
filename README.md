@@ -2,6 +2,10 @@
 
 # erotic</a>
 
+```
+yarn add -E erotic
+```
+
 [`erotic`][1] is a Node.js module to capture asynchronous stack traces.
 
 You create a `callback` function by calling `erotic()` at the point where you

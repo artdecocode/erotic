@@ -1,7 +1,8 @@
-## 11 May 2018
+## 12 May 2018
 
-### 0.1.1
+### 1.0.0
 
+- [build] switch to new build routine and test w/ `zoroaster --babel`
 - [adc] move to [Art Deco Code](https://artdeco.bz)
 
 ## 17 October 2017
