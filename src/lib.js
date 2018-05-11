@@ -11,7 +11,7 @@ const getItemsFrom = (array, from) => array.slice(from)
  * @param {boolean} [oneLine=false] Whether just first line must be returned
  * @returns {string} A stack segment strating from the specified line.
  */
-const getStackSegment = (stack, from = 0, oneLine = false) => {
+export const getStackSegment = (stack, from = 0, oneLine = false) => {
   if (from === 0 && !oneLine) {
     return stack
   }

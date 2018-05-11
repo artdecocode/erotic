@@ -1,6 +1,6 @@
 import { ok, doesNotThrow, equal } from 'assert'
 import context, { Context } from '../context' // eslint-disable-line
-import erotic from '../../src/'
+import erotic from '../../src'
 
 /** @type {Object.<string, (ctx: Context)>} */
 const T = {
@@ -13,7 +13,7 @@ const T = {
       erotic()
     })
   },
-  'should return error stack'({ removeLineNumbers, nodeLt }) {
+  'returns error stack'({ removeLineNumbers, nodeLt }) {
     const e = erotic()
     const message = 'error-message'
     return new Promise((_, reject) => {

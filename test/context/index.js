@@ -38,7 +38,7 @@ async function getTimeoutError() {
   }
 }
 
-export async function context() {
+export default async function context() {
   const error = eroticError('context error', 'TEST_ERROR')
   const asyncError = await getTimeoutError()
   const [

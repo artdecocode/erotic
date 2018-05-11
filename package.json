@@ -38,6 +38,7 @@
     "@babel/plugin-syntax-object-rest-spread": "7.0.0-beta.46",
     "@babel/plugin-transform-modules-commonjs": "7.0.0-beta.46",
     "@babel/register": "7.0.0-beta.46",
+    "noddy": "1.1.1",
     "zoroaster": "1.1.0"
   },
   "dependencies": {
