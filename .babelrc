@@ -1,20 +1,9 @@
 {
-    "presets": [
-        ["env", {
-            "exclude": [
-                "transform-regenerator",
-                "transform-async-to-generator"
-            ],
-            "modules": false,
-            "debug": true,
-            "targets": {
-                "node": 4
-            }
-        }]
-    ],
     "plugins": [
-        ["fast-async", {
-            "spec": true
-        }]
-    ]
-}
+      "@babel/plugin-syntax-object-rest-spread",
+      ["@babel/plugin-transform-modules-commonjs", {
+        "strictMode": false
+      }]
+    ],
+    "retainLines": true
+  }

@@ -1,10 +1,10 @@
 var getLastItem = function getLastItem(array) {
-    var item = array[array.length - 1];
-    return item;
-};
+  var item = array[array.length - 1]
+  return item
+}
 var getItemsFrom = function getItemsFrom(array, from) {
-    return array.slice(from);
-};
+  return array.slice(from)
+}
 
 /**
  * Get a segment of the stack string, defaults are from = 0 and oneLine = false.
@@ -14,21 +14,21 @@ var getItemsFrom = function getItemsFrom(array, from) {
  * @returns {string} A stack segment strating from the specified line.
  */
 var getStackSegment = function getStackSegment(stack) {
-    var from = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-    var oneLine = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+  var from = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0
+  var oneLine = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false
 
-    if (from === 0 && !oneLine) {
-        return stack;
-    }
-    var splitStack = stack.split('\n', oneLine ? from + 1 : Number.Infinity);
-    if (oneLine) {
-        var line = getLastItem(splitStack);
-        return line;
-    } else {
-        var items = getItemsFrom(splitStack, from);
-        return items.join('\n');
-    }
-};
+  if (from === 0 && !oneLine) {
+    return stack
+  }
+  var splitStack = stack.split('\n', oneLine ? from + 1 : Number.Infinity)
+  if (oneLine) {
+    var line = getLastItem(splitStack)
+    return line
+  } else {
+    var items = getItemsFrom(splitStack, from)
+    return items.join('\n')
+  }
+}
 
 /**
  * Get the stack trace part of when the erotic function was called. Disregards
@@ -38,9 +38,9 @@ var getStackSegment = function getStackSegment(stack) {
  * @private
  */
 var getEntryStack = function getEntryStack(stack) {
-    var stackSegment = getStackSegment(stack, 2);
-    return stackSegment;
-};
+  var stackSegment = getStackSegment(stack, 2)
+  return stackSegment
+}
 
 /**
  * Get stack line of where the callback was called.
@@ -48,13 +48,13 @@ var getEntryStack = function getEntryStack(stack) {
  * @returns {string} Stack line.
  */
 var getCalleeStackLine = function getCalleeStackLine(stack) {
-    var calleeStackLine = getStackSegment(stack, 2, true);
-    return calleeStackLine;
-};
+  var calleeStackLine = getStackSegment(stack, 2, true)
+  return calleeStackLine
+}
 
 var getStackHeading = function getStackHeading(message) {
-    return `Error: ${message}`;
-};
+  return `Error: ${message}`
+}
 
 /**
  * Extract caller from function's `arguments`.
@@ -63,15 +63,15 @@ var getStackHeading = function getStackHeading(message) {
  * @private
  */
 var getCallerFromArguments = function getCallerFromArguments(args) {
-    var caller = args.callee.caller;
+  var caller = args.callee.caller
 
-    return caller;
-};
+  return caller
+}
 
 module.exports = {
-    getStackSegment,
-    getCalleeStackLine,
-    getEntryStack,
-    getStackHeading,
-    getCallerFromArguments
-};
+  getStackSegment,
+  getCalleeStackLine,
+  getEntryStack,
+  getStackHeading,
+  getCallerFromArguments,
+}
