@@ -48,7 +48,7 @@ const T = {
   getCalleeStackLine: {
     'returns line of stack where it was called'({ stack }) {
       const res = getCalleeStackLine(stack)
-      assert(/at Object.StackContext/.test(res))
+      assert(/at Object.context/.test(res))
     },
   },
   getStackHeading: {

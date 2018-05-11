@@ -63,7 +63,7 @@ export default async function context() {
 
 /**
  * @typedef {Object} Context
- * @property
+ * @property {nodeLt} nodeLt
  */
 
 
