@@ -2,6 +2,8 @@
 
 # erotic</a>
 
+[![npm version](https://badge.fury.io/js/erotic.svg)](https://badge.fury.io/js/erotic)
+
 ```
 yarn add -E erotic
 ```
