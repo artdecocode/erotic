@@ -19,18 +19,18 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/Sobesednik/erotic.git"
+    "url": "git://github.com/artdecocode/erotic.git"
   },
   "keywords": [
     "error",
     "stack"
   ],
-  "author": "Anton <anton@sobesednik.media>",
+  "author": "Anton <anton@adc.sh>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Sobesednik/erotic/issues"
+    "url": "https://github.com/artdecocode/erotic/issues"
   },
-  "homepage": "https://github.com/Sobesednik/erotic#readme",
+  "homepage": "https://github.com/artdecocode/erotic#readme",
   "devDependencies": {
     "babel-cli": "6.26.0",
     "babel-preset-env": "1.6.1",
