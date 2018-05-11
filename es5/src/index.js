@@ -1,9 +1,9 @@
 var _require = require('./lib'),
-    getEntryStack = _require.getEntryStack,
-    getCallerFromArguments = _require.getCallerFromArguments;
+  getEntryStack = _require.getEntryStack,
+  getCallerFromArguments = _require.getCallerFromArguments
 
 var _require2 = require('./callback'),
-    makeCallback = _require2.makeCallback;
+  makeCallback = _require2.makeCallback
 
 /**
  * Call this method to get a function that will return an error with a stack
@@ -12,11 +12,11 @@ var _require2 = require('./callback'),
 
 
 function erotic() {
-    var error = new Error();
-    var caller = getCallerFromArguments(arguments);
-    var entryStack = getEntryStack(error.stack);
+  var error = new Error()
+  var caller = getCallerFromArguments(arguments)
+  var entryStack = getEntryStack(error.stack)
 
-    return makeCallback(caller, entryStack);
+  return makeCallback(caller, entryStack)
 }
 
-module.exports = erotic;
+module.exports = erotic

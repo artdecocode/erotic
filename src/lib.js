@@ -1,6 +1,6 @@
 const getLastItem = (array) => {
-    const item = array[array.length - 1]
-    return item
+  const item = array[array.length - 1]
+  return item
 }
 const getItemsFrom = (array, from) => array.slice(from)
 
@@ -12,18 +12,18 @@ const getItemsFrom = (array, from) => array.slice(from)
  * @returns {string} A stack segment strating from the specified line.
  */
 const getStackSegment = (stack, from = 0, oneLine = false) => {
-    if (from === 0 && !oneLine) {
-        return stack
-    }
-    const splitStack = stack
-        .split('\n', oneLine ? from + 1 : Number.Infinity)
-    if (oneLine) {
-        const line = getLastItem(splitStack)
-        return line
-    } else {
-        const items = getItemsFrom(splitStack, from)
-        return items.join('\n')
-    }
+  if (from === 0 && !oneLine) {
+    return stack
+  }
+  const splitStack = stack
+    .split('\n', oneLine ? from + 1 : Number.Infinity)
+  if (oneLine) {
+    const line = getLastItem(splitStack)
+    return line
+  } else {
+    const items = getItemsFrom(splitStack, from)
+    return items.join('\n')
+  }
 }
 
 /**
@@ -33,9 +33,9 @@ const getStackSegment = (stack, from = 0, oneLine = false) => {
  * @returns {string} A part of stack
  * @private
  */
-const getEntryStack = (stack) => {
-    const stackSegment = getStackSegment(stack, 2)
-    return stackSegment
+export const getEntryStack = (stack) => {
+  const stackSegment = getStackSegment(stack, 2)
+  return stackSegment
 }
 
 /**
@@ -43,12 +43,12 @@ const getEntryStack = (stack) => {
  * @param {string} stack Stack string.
  * @returns {string} Stack line.
  */
-const getCalleeStackLine = (stack) => {
-    const calleeStackLine = getStackSegment(stack, 2, true)
-    return calleeStackLine
+export const getCalleeStackLine = (stack) => {
+  const calleeStackLine = getStackSegment(stack, 2, true)
+  return calleeStackLine
 }
 
-const getStackHeading = message => `Error: ${message}`
+export const getStackHeading = message => `Error: ${message}`
 
 /**
  * Extract caller from function's `arguments`.
@@ -56,15 +56,7 @@ const getStackHeading = message => `Error: ${message}`
  * @returns {function} The caller function from arguments.callee.caller.
  * @private
  */
-const getCallerFromArguments = (args) => {
-    const { callee: { caller } } = args
-    return caller
-}
-
-module.exports = {
-    getStackSegment,
-    getCalleeStackLine,
-    getEntryStack,
-    getStackHeading,
-    getCallerFromArguments,
+export const getCallerFromArguments = (args) => {
+  const { callee: { caller } } = args
+  return caller
 }

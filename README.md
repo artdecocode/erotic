@@ -12,15 +12,6 @@ trace will be updated to include the point of entry.
 Start using [`erotic` npm package][1] today to get the benefits of more
 user-friendly error messages from asynchronous function calls.
 
-## ES5
-
-The package uses some newer language features. For your convenience, it's been
-transpiled to be compatible with Node 4. You can use the following snippet.
-
-```js
-const erotic = require('erotic/es5/src/')
-```
-
 ## API
 
 The package's API consists of 2 functions: a constructor of a callback, which
@@ -130,6 +121,17 @@ Error: some error
     at ontimeout (timers.js:469:11)
     at tryOnTimeout (timers.js:304:5)
     at Timer.listOnTimeout (timers.js:264:5)
+```
+
+## ES5
+
+> THIS SHOULD NOT BE USED. THIS IS BEING REMOVED. USE LATEST NODE.
+
+The package uses some newer language features. For your convenience, it's been
+transpiled to be compatible with Node 4. You can use the following snippet.
+
+```js
+const erotic = require('erotic/es5')
 ```
 
 ---

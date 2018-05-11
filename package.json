@@ -2,19 +2,20 @@
   "name": "erotic",
   "version": "0.2.0",
   "description": "Capture synchronous part of the error stack in asynchronous functions",
-  "main": "src/index.js",
+  "main": "build",
   "scripts": {
-    "test": "zoroaster test/spec",
+    "test": "zoroaster test/spec --babel",
     "test-es5": "zoroaster es5/test/spec",
     "test-watch": "zoroaster test/spec --watch",
     "debug": "ZOROASTER_TIMEOUT=99999 node --inspect=5858 node_modules/.bin/zoroaster test/spec/ --watch",
     "debug-es5": "ZOROASTER_TIMEOUT=99999 node --debug=5858 node_modules/.bin/zoroaster es5/test/spec/ --watch",
     "build-src": "babel src --out-dir es5/src",
     "build-test": "babel test --out-dir es5/test",
-    "build": "run-s build-src build-test"
+    "build": "babel src --out-dir build"
   },
   "files": [
     "src",
+    "build",
     "es5/src"
   ],
   "repository": {
@@ -32,6 +33,11 @@
   },
   "homepage": "https://github.com/artdecocode/erotic#readme",
   "devDependencies": {
+    "@babel/cli": "7.0.0-beta.46",
+    "@babel/core": "7.0.0-beta.46",
+    "@babel/plugin-syntax-object-rest-spread": "7.0.0-beta.46",
+    "@babel/plugin-transform-modules-commonjs": "7.0.0-beta.46",
+    "@babel/register": "7.0.0-beta.46",
     "zoroaster": "1.1.0"
   },
   "dependencies": {
