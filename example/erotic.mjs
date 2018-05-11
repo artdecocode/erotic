@@ -1,8 +1,8 @@
 import erotic from '..'
-import { inspect } from 'util'
+import util from 'util'
 
 console.log(erotic)
-const printError = err => console.log(inspect(err, { colors: true }))
+const printError = err => console.log(util.inspect(err, { colors: true }))
 process
   .on('unhandledRejection', printError)
   .on('uncaughtException', printError)
