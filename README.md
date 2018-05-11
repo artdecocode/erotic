@@ -1,4 +1,4 @@
-<a href="https://npmjs.org/packages/erotic"><img align="right" src="./logo.jpg" width="225" alt="Erotic" />
+<a href="https://artdeco.bz/erotic"><img align="right" src="./logo.jpg" width="225" alt="Erotic" />
 
 # erotic</a>
 
@@ -101,10 +101,10 @@ async function exampleWithPromise() {
 
 ```fs
 Error: promise timeout error
-    at Timeout.setTimeout [as _onTimeout] (/Users/anton/Sobes/erotic/example/erotic.js:30:27)
-    at exampleWithPromise (/Users/anton/Sobes/erotic/example/erotic.js:27:17)
-    at __dirname (/Users/anton/Sobes/erotic/example/erotic.js:56:11)
-    at Object.<anonymous> (/Users/anton/Sobes/erotic/example/erotic.js:57:3)
+    at Timeout.setTimeout [as _onTimeout] (artdeco/erotic/example/erotic.js:30:27)
+    at exampleWithPromise (artdeco/erotic/example/erotic.js:27:17)
+    at __dirname (artdeco/erotic/example/erotic.js:56:11)
+    at Object.<anonymous> (artdeco/erotic/example/erotic.js:57:3)
 ```
 
 ## Motivation
@@ -137,7 +137,8 @@ Error: some error
 
 Logo: [Thornton’s Temple of Flora][2]
 
-(c) [Sobesednik-Media](https://sobes.io) 2017
+(c) [Art Deco Code][3] 2018
 
 [1]: https://npmjs.org/packages/erotic
 [2]: https://publicdomainreview.org/2015/03/11/sex-and-science-in-robert-thorntons-temple-of-flora/
+[3]: https://artdeco.bz
