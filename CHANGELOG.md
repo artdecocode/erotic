@@ -2,6 +2,7 @@
 
 ### 1.0.0
 
+- [test] use [`noddy`](https://artdeco.bz/noddy) to detect `Node.js` version
 - [build] switch to new build routine and test w/ `zoroaster --babel`
 - [adc] move to [Art Deco Code](https://artdeco.bz)
 
