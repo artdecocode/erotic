@@ -1,5 +1,9 @@
 ## 12 May 2018
 
+### 1.0.1
+
+- [doc] add badge
+
 ### 1.0.0
 
 - [test] use [`noddy`](https://artdeco.bz/noddy) to detect `Node.js` version
