@@ -7,12 +7,15 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Mjs Example",
-      "program": "${workspaceFolder}/example/erotic.mjs",
-      "runtimeArgs": [
-        "--experimental-modules"
+      "name": "Launch Example",
+      "program": "${workspaceFolder}/example/run.js",
+      "args": [
+        "example/error"
       ],
       "console": "integratedTerminal",
+      "skipFiles": [
+        "<node_internals>/**/*.js"
+      ]
     },
     {
       "type": "node",
@@ -23,7 +26,8 @@
         "ZOROASTER_TIMEOUT": "999999999"
       },
       "args": [
-        "test/spec",
+        "test/spec/_require.js",
+        "test/spec/index.js",
         "--babel"
       ],
       "console": "integratedTerminal",

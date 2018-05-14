@@ -1,24 +1,25 @@
+import cleanStack from 'clean-stack'
 import {
   getCallerFromArguments, getCalleeStackLine, getStackHeading,
 } from './lib'
-import cleanStack from 'clean-stack'
 
 /**
  * Create a callback
  * @function makeCallback
  * @param {function} entryCaller function which was called at entry
  * @param {string} entryStack first line of the error stack to be returned
+ * @param {boolean} [shadow=false] print only entry stack
  * @private
  */
-export function makeCallback(entryCaller, entryStack) {
+export function makeCallback(entryCaller, entryStack, shadow = false) {
   /**
-   * This callback should be called when an asynchronous error occured.
+   * This callback should be called when an asynchronous error occurred.
    * @param {(string|Error)} messageOrError A message string or an Error object at
    * the point of actual error.
    * @returns {Error} An error with an updated stack which should be throw, or
    * rejected with.
    */
-  function eroticCallback(messageOrError) {
+  function cb(messageOrError) {
     const caller = getCallerFromArguments(arguments)
     const { stack: errorStack } = new Error()
     const calleeStackLine = getCalleeStackLine(errorStack)
@@ -27,21 +28,19 @@ export function makeCallback(entryCaller, entryStack) {
 
     const stackHeading = getStackHeading(message)
     const entryHasCallee = entryCaller === caller
-    const stackMessage = [stackHeading]
-      .concat(entryHasCallee ?
-        entryStack :
-        [
-          calleeStackLine,
-          entryStack,
-        ]
-      ).join('\n')
+    const stackMessage = [
+      stackHeading,
+      ...(entryHasCallee || shadow ? [entryStack] : [
+        calleeStackLine,
+        entryStack,
+      ]),
+    ].join('\n')
+
     const stack = cleanStack(stackMessage)
     const properties = { message, stack }
-    return Object.assign(new Error(), isError ?
-      Object.assign({}, messageOrError, properties) :
-      properties
-    )
+
+    return Object.assign(isError ? messageOrError : new Error(), properties)
   }
 
-  return eroticCallback
+  return cb
 }

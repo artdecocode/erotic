@@ -9,7 +9,7 @@ const getItemsFrom = (array, from) => array.slice(from)
  * @param {string} stack the stack string
  * @param {number} [from=0] index from which to slice from
  * @param {boolean} [oneLine=false] Whether just first line must be returned
- * @returns {string} A stack segment strating from the specified line.
+ * @returns {string} A stack segment starting from the specified line.
  */
 export const getStackSegment = (stack, from = 0, oneLine = false) => {
   if (from === 0 && !oneLine) {
@@ -30,11 +30,12 @@ export const getStackSegment = (stack, from = 0, oneLine = false) => {
  * Get the stack trace part of when the erotic function was called. Disregards
  * first two lines.
  * @param {string} stack error's stack
+ * @param {number} [transparent] trim the top line as well
  * @returns {string} A part of stack
  * @private
  */
-export const getEntryStack = (stack) => {
-  const stackSegment = getStackSegment(stack, 2)
+export const getEntryStack = (stack, transparent) => {
+  const stackSegment = getStackSegment(stack, 2 + (transparent ? 1 : 0))
   return stackSegment
 }
 

@@ -1,33 +1,41 @@
 import erotic from '..'
-import { inspect } from 'util'
 
-console.log(erotic)
-const printError = err => console.log(inspect(err, { colors: true }))
+const printError = ({ stack }) => console.log(stack)
+
 process
   .on('unhandledRejection', printError)
   .on('uncaughtException', printError)
 
-function example() {
-  const err = erotic()
+
+function native() {
   setTimeout(() => {
-    throw err('example error')
+    throw new Error('some error')
+  }, 10)
+}
+
+function example() {
+  const cb = erotic()
+  setTimeout(() => {
+    const err = cb('erotic error')
+    throw err
   }, 10)
 }
 
 function exampleWithError() {
-  const err = erotic()
+  const cb = erotic()
   setTimeout(() => {
     const error = new Error('timeout error')
     error.code = 'TIMEOUT_ERROR'
-    throw err(error)
+    const err = cb(error)
+    throw err
   }, 10)
 }
 
 async function exampleWithPromise() {
-  const err = erotic()
+  const cb = erotic()
   await new Promise((_, reject) => {
     setTimeout(() => {
-      const error = err('promise timeout error')
+      const error = cb('promise timeout error')
       reject(error)
     }, 10)
   })
@@ -36,16 +44,10 @@ async function exampleWithPromise() {
 async function promise() {
   await new Promise((_, reject) => {
     setTimeout(() => {
-      const error = new Error('native promise timeout error')
+      const error = new Error('promise without erotic timeout error')
       reject(error)
     }, 10)
   })
-}
-
-function native() {
-  setTimeout(() => {
-    throw new Error('some error')
-  }, 10)
 }
 
 native()
@@ -55,7 +57,7 @@ exampleWithError();
 (async () => {
   await exampleWithPromise()
 })();
+
 (async () => {
   await promise()
 })()
-

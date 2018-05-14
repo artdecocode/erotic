@@ -1,21 +1,14 @@
+/* global erotic */
 import { ok, doesNotThrow, equal } from 'assert'
 import context, { Context } from '../context' // eslint-disable-line
-
-const defaultLib = '../../src'
-const { LIB_MAIN = defaultLib } = process.env
-const { default: erotic } = require(LIB_MAIN)
-
-if (LIB_MAIN != defaultLib) {
-  console.log('using lib @ %s', LIB_MAIN) // eslint-disable-line
-}
 
 /** @type {Object.<string, (ctx: Context)>} */
 const T = {
   context,
-  'should be a function'() {
+  'is a function'() {
     equal(typeof erotic, 'function')
   },
-  'should call package without error'() {
+  'calls package without error'() {
     doesNotThrow(function doesNotThrow() {
       erotic()
     })
@@ -39,7 +32,7 @@ const T = {
       ok(s.startsWith(expected))
     })
   },
-  'should return error stack with sync function'({ removeLineNumbers }) {
+  'returns error stack with sync function'({ removeLineNumbers }) {
     const makeError = erotic()
     const message = 'error-message'
     const eroticError = makeError(message)
@@ -48,21 +41,21 @@ const T = {
     } catch ({ stack }) {
       const s = removeLineNumbers(stack)
       const expected = `Error: ${message}
-    at should return error stack with sync function`
+    at returns error stack with sync function`
       ok(s.startsWith(expected))
     }
   },
-  async 'should extend passed error object'() {
+  async 'extends passed error object'() {
     const er = erotic()
     const message = 'error-message'
     const code = 'TEST_ERROR'
     try {
-      await new Promise((_, reject) => {
+      await new Promise((_, r) => {
         setTimeout(() => {
           const err = new Error(message)
           err.code = code
-          const eroticError = er(err)
-          reject(eroticError)
+          const e = er(err)
+          r(e)
         }, 1)
       })
     } catch (error) {

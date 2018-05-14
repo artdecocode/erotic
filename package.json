@@ -4,20 +4,23 @@
   "description": "Capture synchronous part of the error stack in asynchronous functions",
   "main": "build",
   "scripts": {
+    "t": "zoroaster --babel --watch",
     "test": "zoroaster test/spec --babel",
-    "test-build": "LIB_MAIN=../../build zoroaster test/spec --babel",
-    "test-es5": "zoroaster es5/test/spec",
+    "test-build": "LIB_MAIN=../.. zoroaster test/spec --babel",
+    "test-es5": "LIB_MAIN=../../es5 zoroaster test/spec --babel",
     "test-watch": "zoroaster test/spec --watch",
-    "debug": "ZOROASTER_TIMEOUT=99999 node --inspect=5858 node_modules/.bin/zoroaster test/spec/ --watch",
-    "debug-es5": "ZOROASTER_TIMEOUT=99999 node --debug=5858 node_modules/.bin/zoroaster es5/test/spec/ --watch",
-    "build-src": "babel src --out-dir es5/src",
-    "build-test": "babel test --out-dir es5/test",
-    "build": "babel src --out-dir build"
+    "test-all": "yarn-s test test-build test-es5",
+    "build": "babel src --out-dir build",
+    "e": "node example/run",
+    "example/message.js": "yarn e example/message",
+    "example/error.js": "node example/run example/error",
+    "example/transparent.js": "node example/run example/transparent",
+    "example/read-file.js": "node example/run example/read-file",
+    "example/erotic.js": "node example/run example/erotic"
   },
   "files": [
     "build",
-    "es5/src",
-    "es5/index.js"
+    "es5"
   ],
   "repository": {
     "type": "git",
@@ -40,6 +43,7 @@
     "@babel/plugin-transform-modules-commonjs": "7.0.0-beta.46",
     "@babel/register": "7.0.0-beta.46",
     "noddy": "1.1.1",
+    "yarn-s": "1.1.0",
     "zoroaster": "1.1.0"
   },
   "dependencies": {
