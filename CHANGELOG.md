@@ -1,3 +1,9 @@
+## 14 May 2018
+
+### 1.1.0
+
+- [feature] transparency
+
 ## 12 May 2018
 
 ### 1.0.1
