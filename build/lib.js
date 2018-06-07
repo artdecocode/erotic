@@ -61,3 +61,4 @@ const getCallerFromArguments = args => {
   const { callee: { caller } } = args;
   return caller;
 };exports.getCallerFromArguments = getCallerFromArguments;
+//# sourceMappingURL=lib.js.map

@@ -15,3 +15,4 @@ function erotic(transparent) {
 
   return (0, _callback.makeCallback)(caller, entryStack, transparent);
 }
+//# sourceMappingURL=index.js.map
