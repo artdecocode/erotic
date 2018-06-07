@@ -1,27 +1,27 @@
 {
-    "plugins": [
-      "@babel/plugin-syntax-object-rest-spread",
-      ["@babel/plugin-transform-modules-commonjs", {
-        "strictMode": false
-      }]
-    ],
-    "env": {
-      "test-build": {
-        "plugins": [
-          [
-            "transform-rename-import",
-            {
-              "original": "^((../)+)src",
-              "replacement": "$1build"
-            }
-          ]
-        ],
-        "ignore": [
-          "build/**/*.js"
+  "plugins": [
+    "@babel/plugin-syntax-object-rest-spread",
+    ["@babel/plugin-transform-modules-commonjs", {
+      "strictMode": false
+    }]
+  ],
+  "env": {
+    "test-build": {
+      "plugins": [
+        [
+          "transform-rename-import",
+          {
+            "original": "^((../)+)src",
+            "replacement": "$1build"
+          }
         ]
-      },
-      "debug": {
-        "retainLines": true
-      }
+      ],
+      "ignore": [
+        "build/**/*.js"
+      ]
+    },
+    "debug": {
+      "retainLines": true
     }
   }
+}
