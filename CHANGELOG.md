@@ -1,3 +1,10 @@
+## 7 June 2018
+
+### 1.2.0
+
+- [feature] enable source maps for build
+- [package] artdeco eslint
+
 ## 14 May 2018
 
 ### 1.1.0
