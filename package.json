@@ -10,7 +10,7 @@
     "test-es5": "LIB_MAIN=../../es5 zoroaster test/spec --babel",
     "test-watch": "zoroaster test/spec --watch",
     "test-all": "yarn-s test test-build test-es5",
-    "build": "babel src --out-dir build",
+    "build": "babel src --out-dir build --source-maps",
     "e": "node example/run",
     "example/message.js": "yarn e example/message",
     "example/error.js": "node example/run example/error",
