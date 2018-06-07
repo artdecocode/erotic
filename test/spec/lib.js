@@ -1,14 +1,13 @@
+import { ok, deepEqual, equal } from 'assert'
 import {
   getStackSegment, getEntryStack, getCalleeStackLine, getStackHeading,
   getCallerFromArguments,
 } from '../../src/lib'
-import assert from 'assert'
-const { deepEqual, equal } = assert
-import context, { Context } from '../context' // eslint-disable-line
+import Context from '../context'
 
-/** @type {Object.<string, (ctx: Context)>} */
+/** @type {Object.<string, (c: Context)>} */
 const T = {
-  context,
+  context: Context,
   getStackSegment: {
     'returns all lines by default'({ stack }) {
       const res = getStackSegment(stack)
@@ -48,7 +47,7 @@ const T = {
   getCalleeStackLine: {
     'returns line of stack where it was called'({ stack }) {
       const res = getCalleeStackLine(stack)
-      assert(/at Object.context/.test(res))
+      ok(/at Context._init/.test(res))
     },
   },
   getStackHeading: {

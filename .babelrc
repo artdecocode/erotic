@@ -5,5 +5,23 @@
         "strictMode": false
       }]
     ],
-    "retainLines": true
+    "env": {
+      "test-build": {
+        "plugins": [
+          [
+            "transform-rename-import",
+            {
+              "original": "^((../)+)src",
+              "replacement": "$1build"
+            }
+          ]
+        ],
+        "ignore": [
+          "build/**/*.js"
+        ]
+      },
+      "debug": {
+        "retainLines": true
+      }
+    }
   }

@@ -11,12 +11,6 @@ function getStackArray(stack) {
   return stack.split('\n')
 }
 
-function removeLineNumbers(stack) {
-  const re = / \(.*\)$/gm
-  const s = stack.replace(re, '')
-  return s
-}
-
 async function rejectTimeout(
   t = 10,
   name = 'context async error',
@@ -38,40 +32,37 @@ async function getTimeoutError() {
   }
 }
 
-export default async function context() {
-  const error = eroticError('context error', 'TEST_ERROR')
-  const asyncError = await getTimeoutError()
-  const [
-    { stack },
-    { stack: asyncStack },
-  ] = [error, asyncError]
-  const stackArray = getStackArray(stack)
-  const asyncStackArray = getStackArray(asyncStack)
+export default class Context {
+  async _init() {
+    const error = eroticError('context error', 'TEST_ERROR')
+    const asyncError = await getTimeoutError()
+    const [
+      { stack },
+      { stack: asyncStack },
+    ] = [error, asyncError]
+    const stackArray = getStackArray(stack)
+    const asyncStackArray = getStackArray(asyncStack)
 
-  Object.assign(this, {
-    error,
-    stack,
-    stackArray,
-    asyncError,
-    asyncStack,
-    asyncStackArray,
-    removeLineNumbers,
-    nodeLt,
-  })
+    Object.assign(this, {
+      error,
+      stack,
+      stackArray,
+      asyncError,
+      asyncStack,
+      asyncStackArray,
+    })
+  }
+  /** @param {string} stack The error stack to remove error lines from */
+  removeLineNumbers(stack) {
+    const re = / \(.*\)$/gm
+    const s = stack.replace(re, '')
+    return s
+  }
+  /** @param {string} version Version of Node.js to compare against */
+  nodeLt(version) {
+    return nodeLt(version)
+  }
 }
-
-
-/**
- * @typedef {Object} Context
- * @property {nodeLt} nodeLt
- */
-
-
-/** @type {Context} */
-const Context = {}
-
-export { Context }
-
 /*
 Error: context error
     at eroticError (/erotic/test/context/StackContext.js:3:19)

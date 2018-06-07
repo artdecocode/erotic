@@ -1,5 +1,6 @@
-/* global ES5, erotic */
+/* global ES5 */
 import { ok } from 'assert'
+import erotic from '../../src'
 
 const lib = async ({
   message,

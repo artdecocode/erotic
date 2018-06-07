@@ -1,27 +1,29 @@
-/* global erotic */
 import { ok, doesNotThrow, equal } from 'assert'
-import context, { Context } from '../context' // eslint-disable-line
+import Context from '../context'
+import erotic from '../../src'
 
-/** @type {Object.<string, (ctx: Context)>} */
+/** @type {Object.<string, (c: Context)>} */
 const T = {
-  context,
+  context: Context,
   'is a function'() {
     equal(typeof erotic, 'function')
   },
   'calls package without error'() {
-    doesNotThrow(function doesNotThrow() {
+    doesNotThrow(() => {
       erotic()
     })
   },
   async 'returns error stack'({ removeLineNumbers, nodeLt }) {
     const e = erotic()
     const message = 'error-message'
-    await new Promise((_, reject) => {
-      setTimeout(function () {
-        const eroticError = e(message)
-        reject(eroticError)
-      }, 1)
-    }).catch(({ stack }) => {
+    try {
+      await new Promise((_, reject) => {
+        setTimeout(function () {
+          const eroticError = e(message)
+          reject(eroticError)
+        }, 1)
+      })
+    } catch ({ stack }) {
       const s = removeLineNumbers(stack)
       // Timeout constructor name from 5.9.1
       // https://github.com/nodejs/node/pull/5793
@@ -30,7 +32,7 @@ const T = {
     at ${nl ? 'null' : 'Timeout'}._onTimeout
     at returns error stack`
       ok(s.startsWith(expected))
-    })
+    }
   },
   'returns error stack with sync function'({ removeLineNumbers }) {
     const makeError = erotic()

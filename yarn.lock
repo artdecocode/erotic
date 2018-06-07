@@ -336,6 +336,10 @@ babel-code-frame@^6.22.0:
     esutils "^2.0.2"
     js-tokens "^3.0.2"
 
+babel-plugin-transform-rename-import@2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-transform-rename-import/-/babel-plugin-transform-rename-import-2.2.0.tgz#6cf6b0fbc1da7fea969851539f0544ffd635e816"
+
 balanced-match@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
