@@ -1,3 +1,12 @@
+## 4 September 2018
+
+### 2.0.0
+
+- [build] Remove `ES5` build.
+- [build] Build with [`alamode`](https://alamode.cc).
+- [doc] Document w/ `documentary`.
+- [fix] Fix checking for entry caller and callback caller in strict mode.
+
 ## 7 June 2018
 
 ### 1.2.0
