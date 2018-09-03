@@ -7,7 +7,6 @@ const wait = async () => {
   await new Promise((_, reject) => {
     setTimeout(() => {
       const err = new Error('Promise timeout error.')
-      err.code = 'ETIMEOUT'
       const error = cb(err)
       reject(error)
     }, 10)
@@ -17,8 +16,7 @@ const wait = async () => {
 (async function example() {
   try {
     await wait()
-  } catch ({ stack, code }) {
+  } catch ({ stack }) {
     console.log(stack)
-    console.log(code)
   }
 })()

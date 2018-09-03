@@ -237,7 +237,6 @@ const wait = async () => {
   await new Promise((_, reject) => {
     setTimeout(() => {
       const err = new Error('Promise timeout error.')
-      err.code = 'ETIMEOUT'
       const error = cb(err)
       reject(error)
     }, 10)
@@ -247,20 +246,18 @@ const wait = async () => {
 (async function example() {
   try {
     await wait()
-  } catch ({ stack, code }) {
+  } catch ({ stack }) {
     console.log(stack)
-    console.log(code)
   }
 })()
 ```
 
 ```
 Error: Promise timeout error.
-    at Timeout.setTimeout [as _onTimeout] (/Users/zavr/adc/erotic/example/set-timeout-strict.js:11:21)
+    at Timeout.setTimeout [as _onTimeout] (/Users/zavr/adc/erotic/example/set-timeout-strict.js:10:21)
     at wait (/Users/zavr/adc/erotic/example/set-timeout-strict.js:6:14)
-    at example (/Users/zavr/adc/erotic/example/set-timeout-strict.js:19:11)
-    at Object.<anonymous> (/Users/zavr/adc/erotic/example/set-timeout-strict.js:24:3)
-ETIMEOUT
+    at example (/Users/zavr/adc/erotic/example/set-timeout-strict.js:18:11)
+    at Object.<anonymous> (/Users/zavr/adc/erotic/example/set-timeout-strict.js:22:3)
 ```
 
 ### Transparent Mode
