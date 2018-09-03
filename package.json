@@ -4,15 +4,10 @@
   "description": "Capture synchronous part of the error stack in asynchronous functions",
   "main": "build",
   "scripts": {
-    "t": "zoroaster -b",
-    "test": "zoroaster test/spec -b",
-    "test-build": "BABEL_ENV=test-build yarn t test/spec",
-    "build-test": "BABEL_ENV=test-build babel test --out-dir test-build",
-    "@test-build": "zoroaster test-build/spec",
-    "test-es5": "LIB_MAIN=../../es5 zoroaster test/spec -b",
-    "test-watch": "zoroaster test/spec -w",
-    "test-all": "yarn-s test test-build test-es5",
-    "build": "babel src --out-dir build --source-maps",
+    "t": "zoroaster -a",
+    "test": "yarn t test/spec",
+    "test-build": "ALAMODE_ENV=test-build yarn test",
+    "build": "alamode src -o build",
     "e": "node example/run",
     "example/message.js": "yarn e example/message",
     "example/error.js": "node example/run example/error",
@@ -21,8 +16,7 @@
     "example/erotic.js": "node example/run example/erotic"
   },
   "files": [
-    "build",
-    "es5"
+    "build"
   ],
   "repository": {
     "type": "git",
@@ -30,7 +24,14 @@
   },
   "keywords": [
     "error",
-    "stack"
+    "stack",
+    "throw",
+    "preserve",
+    "line",
+    "column",
+    "internal",
+    "node",
+    "reject"
   ],
   "author": "Anton <anton@adc.sh>",
   "license": "MIT",
@@ -39,13 +40,6 @@
   },
   "homepage": "https://github.com/artdecocode/erotic#readme",
   "devDependencies": {
-    "@babel/cli": "7.0.0-beta.49",
-    "@babel/core": "7.0.0-beta.49",
-    "@babel/plugin-syntax-object-rest-spread": "7.0.0-beta.49",
-    "@babel/plugin-transform-modules-commonjs": "7.0.0-beta.49",
-    "@babel/register": "7.0.0-beta.49",
-    "babel-plugin-transform-rename-import": "2.2.0",
-    "eslint": "4.19.1",
     "eslint-config-artdeco": "1.0.0",
     "noddy": "1.1.1",
     "yarn-s": "1.1.0",
