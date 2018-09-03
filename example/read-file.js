@@ -15,7 +15,7 @@ const read = async (path) => {
   })
 }
 
-(async function readWithErotic() {
+(async function example() {
   const path = 'non-existent-file.txt'
   try {
     await read(path)

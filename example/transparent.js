@@ -15,7 +15,7 @@ const read = async (path) => {
   })
 }
 
-(async function transparent() {
+(async function example() {
   const path = 'non-existent-file.txt'
   try {
     await read(path) // error appears to be thrown here
