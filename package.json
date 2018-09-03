@@ -1,19 +1,19 @@
 {
   "name": "erotic",
   "version": "1.2.1",
-  "description": "Capture synchronous part of the error stack in asynchronous functions",
+  "description": "Capture error stacks in asynchronous functions at the point of call.",
   "main": "build",
   "scripts": {
     "t": "zoroaster -a",
     "test": "yarn t test/spec",
     "test-build": "ALAMODE_ENV=test-build yarn test",
     "build": "alamode src -o build",
-    "e": "node example/run",
+    "e": "node example",
     "example/message.js": "yarn e example/message",
-    "example/error.js": "node example/run example/error",
-    "example/transparent.js": "node example/run example/transparent",
-    "example/read-file.js": "node example/run example/read-file",
-    "example/erotic.js": "node example/run example/erotic"
+    "example/error.js": "yarn e example/error",
+    "example/transparent.js": "yarn e example/transparent",
+    "example/read-file.js": "yarn e example/read-file",
+    "example/erotic.js": "yarn e example/erotic"
   },
   "files": [
     "build"
