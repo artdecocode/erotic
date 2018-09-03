@@ -25,7 +25,7 @@ const {
     const message = isError ? messageOrError.message : messageOrError
 
     const stackHeading = getStackHeading(message)
-    const entryHasCallee = entryCaller === caller
+    const entryHasCallee = caller !== null && entryCaller === caller
     const stackMessage = [
       stackHeading,
       ...(entryHasCallee || shadow ? [entryStack] : [
@@ -36,8 +36,9 @@ const {
 
     const stack = cleanStack(stackMessage)
     const properties = { message, stack }
+    const e = isError ? messageOrError : new Error()
 
-    return Object.assign(isError ? messageOrError : new Error(), properties)
+    return Object.assign(e, properties)
   }
 
   return cb
