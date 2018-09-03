@@ -59,26 +59,39 @@ Error: ENOENT: no such file or directory, open 'non-existent-file.txt'
 `erotic` solves the problem described in the Node example by remembering error stack at the point of where the function which through was called.
 
 ```js
+import { readFile } from 'fs'
+import erotic from '../src'
+
 const read = async (path) => {
-  const er = erotic()
+  const er = erotic() // stack has the anchor point
+
   await new Promise((resolve, reject) => {
     readFile(path, (err, data) => {
       if (err) {
-        const e = er(err)
+        const e = er(err) // stack also includes this line
         return reject(e)
       }
       return resolve(data)
     })
   })
 }
+
+(async function readWithErotic() {
+  const path = 'non-existent-file.txt'
+  try {
+    await read(path)
+  } catch ({ stack }) {
+    console.log(stack)
+  }
+})()
 ```
 
 ```
 Error: ENOENT: no such file or directory, open 'non-existent-file.txt'
     at ReadFileContext.readFile [as callback] (/Users/zavr/adc/erotic/example/read-file.js:10:19)
-    at read (/Users/zavr/adc/erotic/example/read-file.js:6:14)
-    at /Users/zavr/adc/erotic/example/read-file.js:22:11
-    at Object.<anonymous> (/Users/zavr/adc/erotic/example/read-file.js:26:3)
+    at read (/Users/zavr/adc/erotic/example/read-file.js:5:14)
+    at readWithErotic (/Users/zavr/adc/erotic/example/read-file.js:21:11)
+    at Object.<anonymous> (/Users/zavr/adc/erotic/example/read-file.js:25:3)
 ```
 
 ### `erotic`: Transparent Mode
@@ -86,6 +99,9 @@ Error: ENOENT: no such file or directory, open 'non-existent-file.txt'
 A transparent mode can be used when it's needed to completely proxy the call to a function, and hide all underlying error stack, making the error appear to happen at the point where the throwing function was called.
 
 ```js
+import { readFile } from 'fs'
+import erotic from '../src'
+
 const read = async (path) => {
   const er = erotic(true)
 
@@ -99,12 +115,21 @@ const read = async (path) => {
     })
   })
 }
+
+(async function transparent() {
+  const path = 'non-existent-file.txt'
+  try {
+    await read(path) // error appears to be thrown here
+  } catch ({ stack }) {
+    console.log(stack)
+  }
+})()
 ```
 
 ```
 Error: ENOENT: no such file or directory, open 'non-existent-file.txt'
-    at /Users/zavr/adc/erotic/example/transparent.js:23:11
-    at Object.<anonymous> (/Users/zavr/adc/erotic/example/transparent.js:27:3)
+    at transparent (/Users/zavr/adc/erotic/example/transparent.js:21:11)
+    at Object.<anonymous> (/Users/zavr/adc/erotic/example/transparent.js:25:3)
 ```
 
 ## API

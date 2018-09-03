@@ -1,7 +1,6 @@
 import { readFile } from 'fs'
 import erotic from '../src'
 
-/* start example */
 const read = async (path) => {
   const er = erotic(true)
 
@@ -15,12 +14,11 @@ const read = async (path) => {
     })
   })
 }
-/* end example */
 
-(async () => {
+(async function transparent() {
   const path = 'non-existent-file.txt'
   try {
-    await read(path)
+    await read(path) // error appears to be thrown here
   } catch ({ stack }) {
     console.log(stack)
   }
