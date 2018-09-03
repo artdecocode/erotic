@@ -225,7 +225,44 @@ Error: Promise timeout error.
 
 #### Strict Mode
 
-When using `strict` mode, `erotic` will not be able to access the line at which an arrow function was called.
+The `erotic` also works fine even in the `strict` mode.
+
+```js
+'use strict'
+
+import erotic from 'erotic'
+
+const wait = async () => {
+  const cb = erotic()
+  await new Promise((_, reject) => {
+    setTimeout(() => {
+      const err = new Error('Promise timeout error.')
+      err.code = 'ETIMEOUT'
+      const error = cb(err)
+      reject(error)
+    }, 10)
+  })
+}
+
+(async function example() {
+  try {
+    await wait()
+  } catch ({ stack, code }) {
+    console.log(stack)
+    console.log(code)
+  }
+})()
+```
+
+```
+Error: Promise timeout error.
+    at Timeout.setTimeout [as _onTimeout] (/Users/zavr/adc/erotic/example/set-timeout-strict.js:11:21)
+    at wait (/Users/zavr/adc/erotic/example/set-timeout-strict.js:6:14)
+    at example (/Users/zavr/adc/erotic/example/set-timeout-strict.js:19:11)
+    at Object.<anonymous> (/Users/zavr/adc/erotic/example/set-timeout-strict.js:24:3)
+ETIMEOUT
+```
+
 ### Transparent Mode
 
 In the transparent mode, the stack will start where the function was called and not show any of its internals.

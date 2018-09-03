@@ -21,4 +21,8 @@ When a string is passed, an error object is created with the message internally.
 
 #### Strict Mode
 
-When using `strict` mode, `erotic` will not be able to access the line at which an arrow function was called.
+The `erotic` also works fine even in the `strict` mode.
+
+%EXAMPLE: example/set-timeout-strict.js, ../src => erotic%
+
+%FORK example example/set-timeout-strict%
