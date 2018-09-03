@@ -10,6 +10,7 @@ In the transparent mode, the stack will start where the function was called and 
 #### Use Case: Assertion Library
 
 For example, when implementing an assertion library, uses will not want to see the details about how the error was created internally. They will only want to know that an error happened at a particular line in their test.
+There will also be an internal _Node.js_ error stack, such as lines with `Module._compile` which are not useful.
 
 Without `erotic`, the full error stack will be exposed:
 

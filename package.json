@@ -33,7 +33,10 @@
     "column",
     "internal",
     "node",
-    "reject"
+    "reject",
+    "transparent",
+    "proxy",
+    "hide"
   ],
   "author": "Anton <anton@adc.sh>",
   "license": "MIT",

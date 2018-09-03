@@ -258,6 +258,7 @@ Error: Promise timeout error.
 #### Use Case: Assertion Library
 
 For example, when implementing an assertion library, uses will not want to see the details about how the error was created internally. They will only want to know that an error happened at a particular line in their test.
+There will also be an internal _Node.js_ error stack, such as lines with `Module._compile` which are not useful.
 
 Without `erotic`, the full error stack will be exposed:
 
@@ -268,7 +269,7 @@ const assertEqual = (actual, expected) => {
   }
 }
 
-(async function test() {
+(function test() {
   try {
     assertEqual('hello', 'world')
   } catch ({ stack }) {
@@ -300,11 +301,11 @@ const assertEqual = (actual, expected) => {
   const e = erotic(true)
   if (actual != expected) {
     const er = e(`${actual} != ${expected}`)
-    throw new Error(er)
+    throw er
   }
 }
 
-(async function test() {
+(function test() {
   try {
     assertEqual('hello', 'world')
   } catch ({ stack }) {
@@ -314,17 +315,9 @@ const assertEqual = (actual, expected) => {
 ```
 
 ```
-Error: Error: hello != world
-    at assertEqual (/Users/zavr/adc/erotic/example/assert.js:7:11)
+Error: hello != world
     at test (/Users/zavr/adc/erotic/example/assert.js:13:5)
     at Object.<anonymous> (/Users/zavr/adc/erotic/example/assert.js:17:3)
-    at Module._compile (module.js:652:30)
-    at Module._compile (/Users/zavr/adc/erotic/node_modules/pirates/lib/index.js:83:24)
-    at Module._extensions..js (module.js:663:10)
-    at Object.newLoader [as .js] (/Users/zavr/adc/erotic/node_modules/pirates/lib/index.js:88:7)
-    at Module.load (module.js:565:32)
-    at tryModuleLoad (module.js:505:12)
-    at Function.Module._load (module.js:497:3)
 ```
 
 ## TODO
