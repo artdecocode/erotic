@@ -66,6 +66,16 @@ const T = {
       equal(error.code, code)
     }
   },
+  'uses only entry line when called synchronously'() {
+    const er = erotic()
+    const e = er('test')
+    let m = 0
+    e.stack.replace(
+      /uses only entry line when called synchronously/g,
+      () => { m++ }
+    )
+    equal(m, 1)
+  },
 }
 
 export default T

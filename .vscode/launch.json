@@ -10,7 +10,7 @@
       "name": "Launch Example",
       "program": "${workspaceFolder}/example/index.js",
       "args": [
-        "example/error"
+        "example/set-timeout-strict"
       ],
       "console": "integratedTerminal",
       "skipFiles": [
@@ -23,7 +23,7 @@
       "name": "Launch Zoroaster",
       "program": "${workspaceFolder}/node_modules/.bin/zoroaster",
       "args": [
-        "test/spec/lib.js",
+        "test/spec",
         "-t", "99999999",
         "-a",
         "-w",

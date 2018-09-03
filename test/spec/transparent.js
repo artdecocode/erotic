@@ -1,4 +1,3 @@
-/* global ES5 */
 import { ok } from 'assert'
 import erotic from '../../src'
 
@@ -25,9 +24,6 @@ const lib = async ({
 }
 
 const T = {
-  context() {
-    if (ES5) throw new Error('not supported')
-  },
   async 'allows to make transparent errors'() {
     try {
       await lib()
