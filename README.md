@@ -19,7 +19,7 @@ yarn add -E erotic
   * [`erotic`: Transparent Mode](#erotic-transparent-mode)
 - [API](#api)
   * [`erotic(transparent?: boolean): Callback`](#erotictransparent-boolean-callback)
-  * [`Callback(messageOrError?: string|Error): Error`](#callbackmessageorerror-stringerror-error)
+  * [`Callback(messageOrError: string|Error): Error`](#callbackmessageorerror-stringerror-error)
   * [Transparent Mode](#transparent-mode)
 - [Copyright](#copyright)
 
@@ -149,7 +149,7 @@ Creates a callback which should be used before throwing any errors to make their
 
 When creating a library which runs some asynchronous code, the callback should be created when entering the function's body, and called at some point in future to update an error's stack before throwing.
 
-### `Callback(`<br/>&nbsp;&nbsp;`messageOrError?: string|Error,`<br/>`): Error`
+### `Callback(`<br/>&nbsp;&nbsp;`messageOrError: string|Error,`<br/>`): Error`
 
 Returns an error with the remembered stack to be thrown. In the example below, a function is created which can throw at some point in future, but its stack trace will begin inside the call to it and not at Node's `setTimeout` internals.
 
