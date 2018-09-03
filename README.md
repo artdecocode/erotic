@@ -18,6 +18,9 @@ yarn add -E erotic
   * [`erotic`: Standard Mode](#erotic-standard-mode)
   * [`erotic`: Transparent Mode](#erotic-transparent-mode)
 - [API](#api)
+  * [`erotic(transparent?: boolean): Callback`](#erotictransparent-boolean-callback)
+  * [`Callback(messageOrError?: string|Error): Error`](#callbackmessageorerror-stringerror-error)
+  * [Transparent Mode](#transparent-mode)
 - [Copyright](#copyright)
 
 ## Quick Examples
@@ -56,11 +59,11 @@ Error: ENOENT: no such file or directory, open 'non-existent-file.txt'
 
 ### `erotic`: Standard Mode
 
-`erotic` solves the problem described in the Node example by remembering error stack at the point of where the function which through was called.
+`erotic` solves the problem described in the _Node.js_ example above by remembering the error stack at the point of where the function was called.
 
 ```js
 import { readFile } from 'fs'
-import erotic from '../src'
+import erotic from 'erotic'
 
 const read = async (path) => {
   const er = erotic() // stack has the anchor point
@@ -76,7 +79,7 @@ const read = async (path) => {
   })
 }
 
-(async function readWithErotic() {
+(async function example() {
   const path = 'non-existent-file.txt'
   try {
     await read(path)
@@ -90,7 +93,7 @@ const read = async (path) => {
 Error: ENOENT: no such file or directory, open 'non-existent-file.txt'
     at ReadFileContext.readFile [as callback] (/Users/zavr/adc/erotic/example/read-file.js:10:19)
     at read (/Users/zavr/adc/erotic/example/read-file.js:5:14)
-    at readWithErotic (/Users/zavr/adc/erotic/example/read-file.js:21:11)
+    at example (/Users/zavr/adc/erotic/example/read-file.js:21:11)
     at Object.<anonymous> (/Users/zavr/adc/erotic/example/read-file.js:25:3)
 ```
 
@@ -100,7 +103,7 @@ A transparent mode can be used when it's needed to completely proxy the call to 
 
 ```js
 import { readFile } from 'fs'
-import erotic from '../src'
+import erotic from 'erotic'
 
 const read = async (path) => {
   const er = erotic(true)
@@ -116,7 +119,7 @@ const read = async (path) => {
   })
 }
 
-(async function transparent() {
+(async function example() {
   const path = 'non-existent-file.txt'
   try {
     await read(path) // error appears to be thrown here
@@ -128,16 +131,126 @@ const read = async (path) => {
 
 ```
 Error: ENOENT: no such file or directory, open 'non-existent-file.txt'
-    at transparent (/Users/zavr/adc/erotic/example/transparent.js:21:11)
+    at example (/Users/zavr/adc/erotic/example/transparent.js:21:11)
     at Object.<anonymous> (/Users/zavr/adc/erotic/example/transparent.js:25:3)
 ```
 
 ## API
 
-The package exports the default [`erotic` function](#erotic).
+The package exports the default `erotic` function.
 
 ```js
 import erotic from 'erotic'
+```
+
+### `erotic(`<br/>&nbsp;&nbsp;`transparent?: boolean,`<br/>`): Callback`
+
+Creates a callback which should be used before throwing any errors to make their stack appear at the point of creation of the callback. The `transparent` option can be used to hide this line also and make the function's errors' stacks start at the caller's line.
+
+When creating a library which runs some asynchronous code, the callback should be created when entering the function's body, and called at some point in future to update an error's stack before throwing.
+
+### `Callback(`<br/>&nbsp;&nbsp;`messageOrError?: string|Error,`<br/>`): Error`
+
+Returns an error with the remembered stack to be thrown. In the example below, a function is created which can throw at some point in future, but its stack trace will begin inside the call to it and not at Node's `setTimeout` internals.
+
+When the callback is called with an error, the error's stack is overridden with a new stack, but all other properties are preserved, and the error is strictly equal to the one passed.
+
+```js
+import erotic from 'erotic'
+
+async function wait() {
+  const cb = erotic()
+  await new Promise((_, reject) => {
+    setTimeout(() => {
+      const err = new Error('Promise timeout error.')
+      err.code = 'ETIMEOUT'
+      const error = cb(err)
+      reject(error)
+    }, 10)
+  })
+}
+
+(async function example() {
+  try {
+    await wait()
+  } catch ({ stack, code }) {
+    console.log(stack)
+    console.log(code)
+  }
+})()
+```
+
+```
+Error: Promise timeout error.
+    at Timeout.setTimeout [as _onTimeout] (/Users/zavr/adc/erotic/example/set-timeout.js:9:21)
+    at wait (/Users/zavr/adc/erotic/example/set-timeout.js:4:14)
+    at example (/Users/zavr/adc/erotic/example/set-timeout.js:17:11)
+    at Object.<anonymous> (/Users/zavr/adc/erotic/example/set-timeout.js:22:3)
+ETIMEOUT
+```
+
+When a string is passed, an error object is created with the message internally.
+
+```js
+import erotic from 'erotic'
+
+async function wait() {
+  const cb = erotic()
+  await new Promise((_, reject) => {
+    setTimeout(() => {
+      const error = cb('Promise timeout error.')
+      reject(error)
+    }, 10)
+  })
+}
+
+(async function example() {
+  try {
+    await wait()
+  } catch ({ stack }) {
+    console.log(stack)
+  }
+})()
+```
+
+```
+Error: Promise timeout error.
+    at Timeout.setTimeout [as _onTimeout] (/Users/zavr/adc/erotic/example/set-timeout-string.js:7:21)
+    at wait (/Users/zavr/adc/erotic/example/set-timeout-string.js:4:14)
+    at example (/Users/zavr/adc/erotic/example/set-timeout-string.js:15:11)
+    at Object.<anonymous> (/Users/zavr/adc/erotic/example/set-timeout-string.js:19:3)
+```
+
+### Transparent Mode
+
+In the transparent mode, the stack will start where the function was called and not show any of its internals.
+
+```js
+import erotic from 'erotic'
+
+async function wait() {
+  const cb = erotic(true)
+  await new Promise((_, reject) => {
+    setTimeout(() => {
+      const error = cb('Promise timeout error.')
+      reject(error)
+    }, 10)
+  })
+}
+
+(async function example() {
+  try {
+    await wait()
+  } catch ({ stack }) {
+    console.log(stack)
+  }
+})()
+```
+
+```
+Error: Promise timeout error.
+    at example (/Users/zavr/adc/erotic/example/set-timeout-transparent.js:15:11)
+    at Object.<anonymous> (/Users/zavr/adc/erotic/example/set-timeout-transparent.js:19:3)
 ```
 
 ## Copyright
