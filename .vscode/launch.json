@@ -8,7 +8,7 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Example",
-      "program": "${workspaceFolder}/example/run.js",
+      "program": "${workspaceFolder}/example/index.js",
       "args": [
         "example/error"
       ],
@@ -22,13 +22,11 @@
       "request": "launch",
       "name": "Launch Zoroaster",
       "program": "${workspaceFolder}/node_modules/.bin/zoroaster",
-      "env": {
-        "ZOROASTER_TIMEOUT": "999999999",
-        "BABEL_ENV": "debug"
-      },
       "args": [
         "test/spec/lib.js",
-        "-b"
+        "-t", "99999999",
+        "-a",
+        "-w",
       ],
       "console": "integratedTerminal",
       "skipFiles": [
