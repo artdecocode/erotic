@@ -1,20 +1,27 @@
-/** yarn example-transparent */
-import run from './async-run'
+import { readFile } from 'fs'
+import erotic from '../src'
 
-/**
- * Transparent mode allows to throw an error from the line where the function
- * which uses erotic to remember errors stack traces was called from.
- */
+/* start example */
+const read = async (path) => {
+  const er = erotic(true)
 
-(async function transparentExample() {
-  try {
-    await run({
-      transparent: true,
+  await new Promise((resolve, reject) => {
+    readFile(path, (err, data) => {
+      if (err) {
+        const e = er(err)
+        return reject(e)
+      }
+      return resolve(data)
     })
-  } catch ({ stack }) {
-    console.log(stack) // eslint-disable-line
+  })
+}
+/* end example */
 
-    // Error: test error
-    //     at transparentExample (example/transparent.js)
+(async () => {
+  const path = 'non-existent-file.txt'
+  try {
+    await read(path)
+  } catch ({ stack }) {
+    console.log(stack)
   }
 })()

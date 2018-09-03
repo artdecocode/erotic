@@ -1,20 +1,13 @@
 import { readFile } from 'fs'
-import erotic from '../src'
 
-/* start example */
 const read = async (path) => {
-  const er = erotic()
   await new Promise((resolve, reject) => {
     readFile(path, (err, data) => {
-      if (err) {
-        const e = er(err)
-        return reject(e)
-      }
+      if (err) return reject(err)
       return resolve(data)
     })
   })
 }
-/* end example */
 
 (async () => {
   const path = 'non-existent-file.txt'
