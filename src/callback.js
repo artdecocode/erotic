@@ -14,10 +14,8 @@ import {
 export function makeCallback(entryCaller, entryStack, shadow = false) {
   /**
    * This callback should be called when an asynchronous error occurred.
-   * @param {(string|Error)} messageOrError A message string or an Error object at
-   * the point of actual error.
-   * @returns {Error} An error with an updated stack which should be throw, or
-   * rejected with.
+   * @param {(string|Error)} messageOrError A message string or an _Error_ object at the point of actual error.
+   * @returns {Error} An error with the updated stack which includes the callee.
    */
   function cb(messageOrError) {
     const caller = getCallerFromArguments(arguments)

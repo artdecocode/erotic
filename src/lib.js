@@ -52,9 +52,9 @@ export const getCalleeStackLine = (stack) => {
 export const getStackHeading = message => `Error: ${message}`
 
 /**
- * Extract caller from function's `arguments`.
- * @param {object} args arguments
- * @returns {function} The caller function from arguments.callee.caller.
+ * Extract caller from the function's `arguments`.
+ * @param {arguments} args arguments
+ * @returns {function} The caller function from `arguments.callee.caller`.
  * @private
  */
 export const getCallerFromArguments = (args) => {
