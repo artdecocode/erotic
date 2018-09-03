@@ -1,4 +1,8 @@
 
+## TODO
+
+- [ ] Look into what happens when called by code which had strict mode.
+
 ## Copyright
 
 Logo: [Thornton’s Temple of Flora][2]

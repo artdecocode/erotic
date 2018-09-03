@@ -4,7 +4,7 @@
 
 [![npm version](https://badge.fury.io/js/erotic.svg)](https://npmjs.org/package/erotic)
 
-`erotic` is a Node.js package to capture asynchronous errors as if they occurred synchronously, which aims at keeping the error stack readable and developer-friendly.
+`erotic` is a Node.js package to capture asynchronous errors as if they occurred synchronously. It aims at keeping the error stack readable and developer-friendly. Furthermore, it can make errors appear as if they happened outside of the function at the point of call.
 
 ```
 yarn add -E erotic
@@ -21,6 +21,8 @@ yarn add -E erotic
   * [`erotic(transparent?: boolean): Callback`](#erotictransparent-boolean-callback)
   * [`Callback(messageOrError: string|Error): Error`](#callbackmessageorerror-stringerror-error)
   * [Transparent Mode](#transparent-mode)
+    * [Use Case: Assertion Library](#use-case-assertion-library)
+- [TODO](#todo)
 - [Copyright](#copyright)
 
 ## Quick Examples
@@ -252,6 +254,82 @@ Error: Promise timeout error.
     at example (/Users/zavr/adc/erotic/example/set-timeout-transparent.js:15:11)
     at Object.<anonymous> (/Users/zavr/adc/erotic/example/set-timeout-transparent.js:19:3)
 ```
+
+#### Use Case: Assertion Library
+
+For example, when implementing an assertion library, uses will not want to see the details about how the error was created internally. They will only want to know that an error happened at a particular line in their test.
+
+Without `erotic`, the full error stack will be exposed:
+
+```js
+const assertEqual = (actual, expected) => {
+  if (actual != expected) {
+    throw new Error(`${actual} != ${expected}`)
+  }
+}
+
+(async function test() {
+  try {
+    assertEqual('hello', 'world')
+  } catch ({ stack }) {
+    console.log(stack)
+  }
+})()
+```
+
+```
+Error: hello != world
+    at assertEqual (/Users/zavr/adc/erotic/example/assert-node.js:3:11)
+    at test (/Users/zavr/adc/erotic/example/assert-node.js:9:5)
+    at Object.<anonymous> (/Users/zavr/adc/erotic/example/assert-node.js:13:3)
+    at Module._compile (module.js:652:30)
+    at Module._compile (/Users/zavr/adc/erotic/node_modules/pirates/lib/index.js:83:24)
+    at Module._extensions..js (module.js:663:10)
+    at Object.newLoader [as .js] (/Users/zavr/adc/erotic/node_modules/pirates/lib/index.js:88:7)
+    at Module.load (module.js:565:32)
+    at tryModuleLoad (module.js:505:12)
+    at Function.Module._load (module.js:497:3)
+```
+
+Whereas when using `erotic` to create a transparent error stack, the will be no indication of what happens inside the function, which can make things clearer.
+
+```js
+import erotic from 'erotic'
+
+const assertEqual = (actual, expected) => {
+  const e = erotic(true)
+  if (actual != expected) {
+    const er = e(`${actual} != ${expected}`)
+    throw new Error(er)
+  }
+}
+
+(async function test() {
+  try {
+    assertEqual('hello', 'world')
+  } catch ({ stack }) {
+    console.log(stack)
+  }
+})()
+```
+
+```
+Error: Error: hello != world
+    at assertEqual (/Users/zavr/adc/erotic/example/assert.js:7:11)
+    at test (/Users/zavr/adc/erotic/example/assert.js:13:5)
+    at Object.<anonymous> (/Users/zavr/adc/erotic/example/assert.js:17:3)
+    at Module._compile (module.js:652:30)
+    at Module._compile (/Users/zavr/adc/erotic/node_modules/pirates/lib/index.js:83:24)
+    at Module._extensions..js (module.js:663:10)
+    at Object.newLoader [as .js] (/Users/zavr/adc/erotic/node_modules/pirates/lib/index.js:88:7)
+    at Module.load (module.js:565:32)
+    at tryModuleLoad (module.js:505:12)
+    at Function.Module._load (module.js:497:3)
+```
+
+## TODO
+
+- [ ] Look into what happens when called by code which had strict mode.
 
 ## Copyright
 
