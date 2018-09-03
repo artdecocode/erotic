@@ -1,7 +1,7 @@
 
-## TODO
+<!-- ## TODO
 
-- [ ] Look into what happens when called by code which had strict mode.
+- [ ] Look into what happens when called by code which had strict mode. -->
 
 ## Copyright
 

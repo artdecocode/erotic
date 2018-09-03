@@ -20,9 +20,9 @@ yarn add -E erotic
 - [API](#api)
   * [`erotic(transparent?: boolean): Callback`](#erotictransparent-boolean-callback)
   * [`Callback(messageOrError: string|Error): Error`](#callbackmessageorerror-stringerror-error)
+    * [Strict Mode](#strict-mode)
   * [Transparent Mode](#transparent-mode)
     * [Use Case: Assertion Library](#use-case-assertion-library)
-- [TODO](#todo)
 - [Copyright](#copyright)
 
 ## Quick Examples
@@ -223,6 +223,9 @@ Error: Promise timeout error.
     at Object.<anonymous> (/Users/zavr/adc/erotic/example/set-timeout-string.js:19:3)
 ```
 
+#### Strict Mode
+
+When using `strict` mode, `erotic` will not be able to access the line at which an arrow function was called.
 ### Transparent Mode
 
 In the transparent mode, the stack will start where the function was called and not show any of its internals.
@@ -319,10 +322,6 @@ Error: hello != world
     at test (/Users/zavr/adc/erotic/example/assert.js:13:5)
     at Object.<anonymous> (/Users/zavr/adc/erotic/example/assert.js:17:3)
 ```
-
-## TODO
-
-- [ ] Look into what happens when called by code which had strict mode.
 
 ## Copyright
 

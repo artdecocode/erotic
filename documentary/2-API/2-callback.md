@@ -18,3 +18,7 @@ When a string is passed, an error object is created with the message internally.
 %EXAMPLE: example/set-timeout-string.js, ../src => erotic%
 
 %FORK example example/set-timeout-string%
+
+#### Strict Mode
+
+When using `strict` mode, `erotic` will not be able to access the line at which an arrow function was called.
