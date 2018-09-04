@@ -50,7 +50,7 @@
     "eslint-config-artdeco": "1.0.1",
     "noddy": "1.1.1",
     "yarn-s": "1.1.0",
-    "zoroaster": "3.0.0"
+    "zoroaster": "3.0.2"
   },
   "dependencies": {
     "clean-stack": "artdecocode/clean-stack#82625bf"
