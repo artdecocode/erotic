@@ -2,7 +2,7 @@
 
 ### 2.0.0
 
-- [build] Remove `ES5` build.
+- [build] Remove `ES5` build (breaking).
 - [build] Build with [`alamode`](https://alamode.cc).
 - [doc] Document w/ `documentary`.
 - [fix] Fix checking for entry caller and callback caller in strict mode.
