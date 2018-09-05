@@ -8,7 +8,7 @@
     "test": "yarn t test/spec",
     "test-build": "ALAMODE_ENV=test-build yarn test",
     "doc": "NODE_DEBUG=doc doc documentary -o README.md",
-    "b": "alamode src -o build",
+    "b": "alamode src -o build -i hide.js",
     "build": "yarn-s doc b",
     "e": "node example",
     "example/message.js": "yarn e example/message",

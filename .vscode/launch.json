@@ -10,7 +10,7 @@
       "name": "Launch Example",
       "program": "${workspaceFolder}/example/index.js",
       "args": [
-        "example/set-timeout-strict"
+        "example/hide-stack-async"
       ],
       "console": "integratedTerminal",
       "skipFiles": [

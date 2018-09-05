@@ -62,7 +62,6 @@ const getItemsFrom = (array, from) => array.slice(from)
   return caller
 }
 
-
 module.exports.getStackSegment = getStackSegment
 module.exports.getEntryStack = getEntryStack
 module.exports.getCalleeStackLine = getCalleeStackLine

@@ -1,7 +1,7 @@
 
-<!-- ## TODO
+## TODO
 
-- [ ] Look into what happens when called by code which had strict mode. -->
+- [ ] Create a function to remember all `async` calls ([Missing stack traces from async functions after the first await](https://github.com/nodejs/node/issues/11865)).
 
 ## Copyright
 

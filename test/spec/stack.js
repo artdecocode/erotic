@@ -1,39 +1,47 @@
 import { throws, equal, ok } from 'zoroaster/assert'
-import { hideStack, hideStackAsync } from '../../src'
+import { hideStack, hideStackAsync } from '../../src/hide'
 import Context from '../context'
 
 /** @type {Object.<string, (c: Context)>} */
 const T = {
   context: Context,
   async 'hides error stack'() {
+    const t = () => {
+      const err = new Error('test-error')
+      throw err
+    }
     const testThrows = () => {
-      throw new Error('test-error')
+      t()
     }
     await throws({
       fn: hideStack,
       args: testThrows,
       stack(stack) {
         const lines = stack.split('\n')
-        equal(lines.length, 2)
-        const [heading, line] = lines
+        equal(lines.length, 3)
+        const [heading, line, line2] = lines
         equal(heading, 'Error: test-error')
-        ok(/at testThrows/.test(line))
+        ok(/at t /.test(line))
+        ok(/at testThrows /.test(line2))
       },
     })
   },
   async 'hides error stack (async)'() {
     const testThrows = async () => {
-      throw new Error('test-error')
+      await new Promise(r => setTimeout(r, 10))
+      const err = new Error('test-error')
+      throw err
     }
     await throws({
       fn: hideStackAsync,
       args: testThrows,
       stack(stack) {
         const lines = stack.split('\n')
-        equal(lines.length, 2)
-        const [heading, line] = lines
+        equal(lines.length, 3)
+        const [heading, line, line2] = lines
         equal(heading, 'Error: test-error')
-        ok(/at testThrows/.test(line))
+        ok(/at testThrows /.test(line))
+        ok(/at <anonymous>/.test(line2))
       },
     })
   },
