@@ -1,6 +1,6 @@
 {
   "name": "erotic",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Capture error stacks in asynchronous functions at the point of call.",
   "main": "build",
   "scripts": {
