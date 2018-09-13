@@ -1,3 +1,9 @@
+## 13 September
+
+### 2.0.1
+
+- [deps] Update to `@artdeco/clean-stack@1`.
+
 ## 4 September 2018
 
 ### 2.0.0
