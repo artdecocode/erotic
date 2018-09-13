@@ -46,13 +46,13 @@
   "homepage": "https://github.com/artdecocode/erotic#readme",
   "devDependencies": {
     "alamode": "1.4.0",
-    "documentary": "1.11.0",
+    "documentary": "1.15.1",
     "eslint-config-artdeco": "1.0.1",
     "noddy": "1.1.1",
     "yarn-s": "1.1.0",
-    "zoroaster": "3.0.3"
+    "zoroaster": "3.1.0"
   },
   "dependencies": {
-    "clean-stack": "artdecocode/clean-stack#82625bf"
+    "@artdeco/clean-stack": "1.0.0"
   }
 }

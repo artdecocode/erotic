@@ -23,6 +23,7 @@ yarn add -E erotic
     * [Strict Mode](#strict-mode)
   * [Transparent Mode](#transparent-mode)
     * [Use Case: Assertion Library](#use-case-assertion-library)
+- [TODO](#todo)
 - [Copyright](#copyright)
 
 ## Quick Examples
@@ -356,6 +357,10 @@ Error: hello != world
     at test (/Users/zavr/adc/erotic/example/assert.js:13:5)
     at Object.<anonymous> (/Users/zavr/adc/erotic/example/assert.js:17:3)
 ```
+
+## TODO
+
+- [ ] Create a function to remember all `async` calls ([Missing stack traces from async functions after the first await](https://github.com/nodejs/node/issues/11865)).
 
 ## Copyright
 

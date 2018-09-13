@@ -1,4 +1,4 @@
-let cleanStack = require('clean-stack'); if (cleanStack && cleanStack.__esModule) cleanStack = cleanStack.default;
+let cleanStack = require('@artdeco/clean-stack'); if (cleanStack && cleanStack.__esModule) cleanStack = cleanStack.default;
 const {
   getCallerFromArguments, getCalleeStackLine, getStackHeading,
 } = require('./lib');
