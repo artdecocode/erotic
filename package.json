@@ -1,8 +1,9 @@
 {
   "name": "erotic",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Capture error stacks in asynchronous functions at the point of call.",
   "main": "build",
+  "module": "src/index.js",
   "scripts": {
     "t": "zoroaster -a",
     "test": "yarn t test/spec",
@@ -18,7 +19,8 @@
     "example/erotic.js": "yarn e example/erotic"
   },
   "files": [
-    "build"
+    "build",
+    "src"
   ],
   "repository": {
     "type": "git",
