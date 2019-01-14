@@ -3,6 +3,7 @@
 ### 2.0.2
 
 - [package] Add the "module" field.
+- [package] Remove source maps.
 
 ## 13 September
 
