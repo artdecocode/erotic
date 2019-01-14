@@ -1,4 +1,3 @@
-
 ```### Callback => Error
 [
   ["messageOrError", "string|Error"]

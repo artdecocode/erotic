@@ -23,7 +23,6 @@ yarn add -E erotic
     * [Strict Mode](#strict-mode)
   * [Transparent Mode](#transparent-mode)
     * [Use Case: Assertion Library](#use-case-assertion-library)
-- [TODO](#todo)
 - [Copyright](#copyright)
 
 ## Quick Examples
@@ -321,13 +320,13 @@ Error: hello != world
     at assertEqual (/Users/zavr/adc/erotic/example/assert-node.js:3:11)
     at test (/Users/zavr/adc/erotic/example/assert-node.js:9:5)
     at Object.<anonymous> (/Users/zavr/adc/erotic/example/assert-node.js:13:3)
-    at Module._compile (module.js:652:30)
+    at Module._compile (module.js:653:30)
     at Module._compile (/Users/zavr/adc/erotic/node_modules/pirates/lib/index.js:83:24)
-    at Module._extensions..js (module.js:663:10)
+    at Module._extensions..js (module.js:664:10)
     at Object.newLoader [as .js] (/Users/zavr/adc/erotic/node_modules/pirates/lib/index.js:88:7)
-    at Module.load (module.js:565:32)
-    at tryModuleLoad (module.js:505:12)
-    at Function.Module._load (module.js:497:3)
+    at Module.load (module.js:566:32)
+    at tryModuleLoad (module.js:506:12)
+    at Function.Module._load (module.js:498:3)
 ```
 
 Whereas when using `erotic` to create a transparent error stack, the will be no indication of what happens inside the function, which can make things clearer.
@@ -358,15 +357,13 @@ Error: hello != world
     at Object.<anonymous> (/Users/zavr/adc/erotic/example/assert.js:17:3)
 ```
 
-## TODO
 
-- [ ] Create a function to remember all `async` calls ([Missing stack traces from async functions after the first await](https://github.com/nodejs/node/issues/11865)).
 
 ## Copyright
 
 Logo: [Thornton’s Temple of Flora][2]
 
-(c) [Art Deco][1] 2018
+(c) [Art Deco][1] 2019
 
-[1]: https://artdeco.bz
+[1]: https://artd.eco
 [2]: https://publicdomainreview.org/2015/03/11/sex-and-science-in-robert-thorntons-temple-of-flora/

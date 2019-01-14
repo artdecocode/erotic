@@ -1,4 +1,3 @@
-
 ```### erotic => Callback
 [
   ["transparent?", "boolean"]

@@ -16,4 +16,3 @@ const { makeCallback } = require('./callback');
 }
 
 module.exports = erotic
-//# sourceMappingURL=index.js.map

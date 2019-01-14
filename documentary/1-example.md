@@ -1,4 +1,3 @@
-
 ## Quick Examples
 
 The following examples show the benefits of using `erotic`.

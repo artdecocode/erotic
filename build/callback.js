@@ -46,4 +46,3 @@ const {
 
 
 module.exports.makeCallback = makeCallback
-//# sourceMappingURL=callback.js.map

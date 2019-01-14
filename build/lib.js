@@ -67,4 +67,3 @@ module.exports.getEntryStack = getEntryStack
 module.exports.getCalleeStackLine = getCalleeStackLine
 module.exports.getStackHeading = getStackHeading
 module.exports.getCallerFromArguments = getCallerFromArguments
-//# sourceMappingURL=lib.js.map
