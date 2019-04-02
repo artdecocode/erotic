@@ -11,7 +11,7 @@
     "doc": "NODE_DEBUG=doc doc documentary -o README.md",
     "b": "alamode src -o build -i hide.js -s",
     "build": "yarn-s doc b",
-    "e": "node example",
+    "e": "alanode",
     "example/message.js": "yarn e example/message",
     "example/error.js": "yarn e example/error",
     "example/transparent.js": "yarn e example/transparent",

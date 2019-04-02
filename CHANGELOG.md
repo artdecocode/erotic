@@ -1,3 +1,9 @@
+## 2 April 2019
+
+### [2.0.3](https://github.com/artdecocode/erotic/compare/v2.0.2...v2.0.3)
+
+- [fix] Remove `@private` JSDoc.
+
 ## 14 January 2019
 
 ### 2.0.2
