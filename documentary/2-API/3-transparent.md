@@ -2,9 +2,9 @@
 
 In the transparent mode, the stack will start where the function was called and not show any of its internals.
 
-%EXAMPLE: example/set-timeout-transparent.js, ../src => erotic%
+%EXAMPLE: example/set-timeout-transparent, ../src => erotic%
 
-%FORK example example/set-timeout-transparent%
+%FORK example/set-timeout-transparent%
 
 #### Use Case: Assertion Library
 
@@ -13,12 +13,12 @@ There will also be an internal _Node.js_ error stack, such as lines with `Module
 
 Without `erotic`, the full error stack will be exposed:
 
-%EXAMPLE: example/assert-node.js, ../src => erotic%
+%EXAMPLE: example/assert-node, ../src => erotic%
 
-%FORK example example/assert-node%
+%FORK example/assert-node%
 
 Whereas when using `erotic` to create a transparent error stack, the will be no indication of what happens inside the function, which can make things clearer.
 
-%EXAMPLE: example/assert.js, ../src => erotic%
+%EXAMPLE: example/assert, ../src => erotic%
 
-%FORK example example/assert%
+%FORK example/assert%

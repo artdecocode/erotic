@@ -145,6 +145,8 @@ The package exports the default `erotic` function.
 import erotic from 'erotic'
 ```
 
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/0.svg?sanitize=true" width="25"></a></p>
+
 ### `erotic(`<br/>&nbsp;&nbsp;`transparent?: boolean,`<br/>`): Callback`
 
 Creates a callback which should be used before throwing any errors to make their stack appear at the point of creation of the callback. The `transparent` option can be used to hide this line also and make the function's errors' stacks start at the caller's line.
@@ -321,9 +323,9 @@ Error: hello != world
     at test (/Users/zavr/adc/erotic/example/assert-node.js:9:5)
     at Object.<anonymous> (/Users/zavr/adc/erotic/example/assert-node.js:13:3)
     at Module._compile (module.js:653:30)
-    at Module._compile (/Users/zavr/adc/erotic/node_modules/pirates/lib/index.js:83:24)
+    at Module._compile (/Users/zavr/adc/erotic/node_modules/pirates/lib/index.js:99:24)
     at Module._extensions..js (module.js:664:10)
-    at Object.newLoader [as .js] (/Users/zavr/adc/erotic/node_modules/pirates/lib/index.js:88:7)
+    at Object.newLoader [as .js] (/Users/zavr/adc/erotic/node_modules/pirates/lib/index.js:104:7)
     at Module.load (module.js:566:32)
     at tryModuleLoad (module.js:506:12)
     at Function.Module._load (module.js:498:3)

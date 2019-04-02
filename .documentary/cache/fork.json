@@ -1,0 +1,95 @@
+{
+  "example/node": {
+    "mtime": 1536012612000,
+    "analysis": [
+      "fs"
+    ],
+    "stdout": "Error: ENOENT: no such file or directory, open 'non-existent-file.txt'\n",
+    "stderr": ""
+  },
+  "example/transparent": {
+    "mtime": 1536014764000,
+    "analysis": [
+      "fs",
+      "src/index.js 1536110167000",
+      "src/lib.js 1554202983000",
+      "src/callback.js 1554202982000",
+      "@artdeco/clean-stack 1.0.1"
+    ],
+    "stdout": "Error: ENOENT: no such file or directory, open 'non-existent-file.txt'\n    at example (/Users/zavr/adc/erotic/example/transparent.js:21:11)\n    at Object.<anonymous> (/Users/zavr/adc/erotic/example/transparent.js:25:3)\n",
+    "stderr": ""
+  },
+  "example/read-file": {
+    "mtime": 1536014763000,
+    "analysis": [
+      "fs",
+      "src/index.js 1536110167000",
+      "src/lib.js 1554202983000",
+      "src/callback.js 1554202982000",
+      "@artdeco/clean-stack 1.0.1"
+    ],
+    "stdout": "Error: ENOENT: no such file or directory, open 'non-existent-file.txt'\n    at ReadFileContext.readFile [as callback] (/Users/zavr/adc/erotic/example/read-file.js:10:19)\n    at read (/Users/zavr/adc/erotic/example/read-file.js:5:14)\n    at example (/Users/zavr/adc/erotic/example/read-file.js:21:11)\n    at Object.<anonymous> (/Users/zavr/adc/erotic/example/read-file.js:25:3)\n",
+    "stderr": ""
+  },
+  "example/set-timeout-string": {
+    "mtime": 1536015805000,
+    "analysis": [
+      "src/index.js 1536110167000",
+      "src/lib.js 1554202983000",
+      "src/callback.js 1554202982000",
+      "@artdeco/clean-stack 1.0.1"
+    ],
+    "stdout": "Error: Promise timeout error.\n    at Timeout.setTimeout [as _onTimeout] (/Users/zavr/adc/erotic/example/set-timeout-string.js:7:21)\n    at wait (/Users/zavr/adc/erotic/example/set-timeout-string.js:4:14)\n    at example (/Users/zavr/adc/erotic/example/set-timeout-string.js:15:11)\n    at Object.<anonymous> (/Users/zavr/adc/erotic/example/set-timeout-string.js:19:3)\n",
+    "stderr": ""
+  },
+  "example/set-timeout": {
+    "mtime": 1536016969000,
+    "analysis": [
+      "src/index.js 1536110167000",
+      "src/lib.js 1554202983000",
+      "src/callback.js 1554202982000",
+      "@artdeco/clean-stack 1.0.1"
+    ],
+    "stdout": "Error: Promise timeout error.\n    at Timeout.setTimeout [as _onTimeout] (/Users/zavr/adc/erotic/example/set-timeout.js:9:21)\n    at wait (/Users/zavr/adc/erotic/example/set-timeout.js:4:14)\n    at example (/Users/zavr/adc/erotic/example/set-timeout.js:17:11)\n    at Object.<anonymous> (/Users/zavr/adc/erotic/example/set-timeout.js:22:3)\nETIMEOUT\n",
+    "stderr": ""
+  },
+  "example/set-timeout-strict": {
+    "mtime": 1536018286000,
+    "analysis": [
+      "src/index.js 1536110167000",
+      "src/lib.js 1554202983000",
+      "src/callback.js 1554202982000",
+      "@artdeco/clean-stack 1.0.1"
+    ],
+    "stdout": "Error: Promise timeout error.\n    at Timeout.setTimeout [as _onTimeout] (/Users/zavr/adc/erotic/example/set-timeout-strict.js:10:21)\n    at wait (/Users/zavr/adc/erotic/example/set-timeout-strict.js:6:14)\n    at example (/Users/zavr/adc/erotic/example/set-timeout-strict.js:18:11)\n    at Object.<anonymous> (/Users/zavr/adc/erotic/example/set-timeout-strict.js:22:3)\n",
+    "stderr": ""
+  },
+  "example/assert-node": {
+    "mtime": 1536016469000,
+    "analysis": [],
+    "stdout": "Error: hello != world\n    at assertEqual (/Users/zavr/adc/erotic/example/assert-node.js:3:11)\n    at test (/Users/zavr/adc/erotic/example/assert-node.js:9:5)\n    at Object.<anonymous> (/Users/zavr/adc/erotic/example/assert-node.js:13:3)\n    at Module._compile (module.js:653:30)\n    at Module._compile (/Users/zavr/adc/erotic/node_modules/pirates/lib/index.js:99:24)\n    at Module._extensions..js (module.js:664:10)\n    at Object.newLoader [as .js] (/Users/zavr/adc/erotic/node_modules/pirates/lib/index.js:104:7)\n    at Module.load (module.js:566:32)\n    at tryModuleLoad (module.js:506:12)\n    at Function.Module._load (module.js:498:3)\n",
+    "stderr": ""
+  },
+  "example/assert": {
+    "mtime": 1536016670000,
+    "analysis": [
+      "src/index.js 1536110167000",
+      "src/lib.js 1554202983000",
+      "src/callback.js 1554202982000",
+      "@artdeco/clean-stack 1.0.1"
+    ],
+    "stdout": "Error: hello != world\n    at test (/Users/zavr/adc/erotic/example/assert.js:13:5)\n    at Object.<anonymous> (/Users/zavr/adc/erotic/example/assert.js:17:3)\n",
+    "stderr": ""
+  },
+  "example/set-timeout-transparent": {
+    "mtime": 1536015238000,
+    "analysis": [
+      "src/index.js 1536110167000",
+      "src/lib.js 1554202983000",
+      "src/callback.js 1554202982000",
+      "@artdeco/clean-stack 1.0.1"
+    ],
+    "stdout": "Error: Promise timeout error.\n    at example (/Users/zavr/adc/erotic/example/set-timeout-transparent.js:15:11)\n    at Object.<anonymous> (/Users/zavr/adc/erotic/example/set-timeout-transparent.js:19:3)\n",
+    "stderr": ""
+  }
+}
