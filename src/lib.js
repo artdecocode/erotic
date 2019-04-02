@@ -32,7 +32,6 @@ export const getStackSegment = (stack, from = 0, oneLine = false) => {
  * @param {string} stack error's stack
  * @param {number} [transparent] trim the top line as well
  * @returns {string} A part of stack
- * @private
  */
 export const getEntryStack = (stack, transparent) => {
   const stackSegment = getStackSegment(stack, 2 + (transparent ? 1 : 0))
@@ -55,7 +54,6 @@ export const getStackHeading = message => `Error: ${message}`
  * Extract caller from the function's `arguments`.
  * @param {arguments} args arguments
  * @returns {function} The caller function from `arguments.callee.caller`.
- * @private
  */
 export const getCallerFromArguments = (args) => {
   const { callee: { caller } } = args

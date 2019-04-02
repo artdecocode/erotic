@@ -9,7 +9,6 @@ import {
  * @param {function} entryCaller function which was called at entry
  * @param {string} entryStack first line of the error stack to be returned
  * @param {boolean} [shadow=false] print only entry stack
- * @private
  */
 export function makeCallback(entryCaller, entryStack, shadow = false) {
   /**
