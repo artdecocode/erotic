@@ -53,7 +53,7 @@ const getItemsFrom = (array, from) => array.slice(from)
 /**
  * Extract caller from the function's `arguments`.
  * @param {Object} args arguments
- * @returns {Function} The caller function from `arguments.callee.caller`.
+ * @returns {!Function} The caller function from `arguments.callee.caller`.
  */
        const getCallerFromArguments = (args) => {
   const { callee: { caller } } = args

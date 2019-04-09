@@ -36,7 +36,7 @@ export function makeCallback(entryCaller, entryStack, shadow = false) {
     const properties = { message, stack }
     const e = isError ? messageOrError : new Error()
 
-    return /** @type {Error} */ (Object.assign(/** @type {Object} */ (e), properties))
+    return /** @type {Error} */ (Object.assign(/** @type {!Object} */ (e), properties))
   }
 
   return cb

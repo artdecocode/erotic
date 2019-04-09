@@ -53,7 +53,7 @@ export const getStackHeading = message => `Error: ${message}`
 /**
  * Extract caller from the function's `arguments`.
  * @param {Object} args arguments
- * @returns {Function} The caller function from `arguments.callee.caller`.
+ * @returns {!Function} The caller function from `arguments.callee.caller`.
  */
 export const getCallerFromArguments = (args) => {
   const { callee: { caller } } = args
