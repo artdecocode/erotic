@@ -1,3 +1,10 @@
+## 10 April 2019
+
+### [2.1.0](https://github.com/artdecocode/erotic/compare/v2.0.3...v2.1.0)
+
+- [types] Type correctly for _Google Closure Compiler_.
+- [deps] Unfix dependencies and update `@artdeco/clean-stack`.
+
 ## 2 April 2019
 
 ### [2.0.3](https://github.com/artdecocode/erotic/compare/v2.0.2...v2.0.3)
