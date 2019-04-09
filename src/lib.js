@@ -16,7 +16,7 @@ export const getStackSegment = (stack, from = 0, oneLine = false) => {
     return stack
   }
   const splitStack = stack
-    .split('\n', oneLine ? from + 1 : Number.Infinity)
+    .split('\n', oneLine ? from + 1 : undefined)
   if (oneLine) {
     const line = getLastItem(splitStack)
     return line
@@ -30,10 +30,10 @@ export const getStackSegment = (stack, from = 0, oneLine = false) => {
  * Get the stack trace part of when the erotic function was called. Disregards
  * first two lines.
  * @param {string} stack error's stack
- * @param {number} [transparent] trim the top line as well
+ * @param {boolean} [transparent] trim the top line as well
  * @returns {string} A part of stack
  */
-export const getEntryStack = (stack, transparent) => {
+export const getEntryStack = (stack, transparent = false) => {
   const stackSegment = getStackSegment(stack, 2 + (transparent ? 1 : 0))
   return stackSegment
 }
@@ -52,8 +52,8 @@ export const getStackHeading = message => `Error: ${message}`
 
 /**
  * Extract caller from the function's `arguments`.
- * @param {arguments} args arguments
- * @returns {function} The caller function from `arguments.callee.caller`.
+ * @param {Object} args arguments
+ * @returns {Function} The caller function from `arguments.callee.caller`.
  */
 export const getCallerFromArguments = (args) => {
   const { callee: { caller } } = args

@@ -4,11 +4,10 @@ const {
 } = require('./lib');
 
 /**
- * Create a callback
- * @function makeCallback
- * @param {function} entryCaller function which was called at entry
- * @param {string} entryStack first line of the error stack to be returned
- * @param {boolean} [shadow=false] print only entry stack
+ * Create a callback.
+ * @param {!Function} entryCaller The function which was called at entry.
+ * @param {string} entryStack The first line of the error stack to be returned
+ * @param {boolean} [shadow=false] Print only entry stack.
  */
        function makeCallback(entryCaller, entryStack, shadow = false) {
   /**
@@ -37,11 +36,10 @@ const {
     const properties = { message, stack }
     const e = isError ? messageOrError : new Error()
 
-    return Object.assign(e, properties)
+    return /** @type {Error} */ (Object.assign(/** @type {Object} */ (e), properties))
   }
 
   return cb
 }
-
 
 module.exports.makeCallback = makeCallback

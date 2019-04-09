@@ -16,7 +16,7 @@ const getItemsFrom = (array, from) => array.slice(from)
     return stack
   }
   const splitStack = stack
-    .split('\n', oneLine ? from + 1 : Number.Infinity)
+    .split('\n', oneLine ? from + 1 : undefined)
   if (oneLine) {
     const line = getLastItem(splitStack)
     return line
@@ -30,10 +30,10 @@ const getItemsFrom = (array, from) => array.slice(from)
  * Get the stack trace part of when the erotic function was called. Disregards
  * first two lines.
  * @param {string} stack error's stack
- * @param {number} [transparent] trim the top line as well
+ * @param {boolean} [transparent] trim the top line as well
  * @returns {string} A part of stack
  */
-       const getEntryStack = (stack, transparent) => {
+       const getEntryStack = (stack, transparent = false) => {
   const stackSegment = getStackSegment(stack, 2 + (transparent ? 1 : 0))
   return stackSegment
 }
@@ -52,8 +52,8 @@ const getItemsFrom = (array, from) => array.slice(from)
 
 /**
  * Extract caller from the function's `arguments`.
- * @param {arguments} args arguments
- * @returns {function} The caller function from `arguments.callee.caller`.
+ * @param {Object} args arguments
+ * @returns {Function} The caller function from `arguments.callee.caller`.
  */
        const getCallerFromArguments = (args) => {
   const { callee: { caller } } = args
