@@ -55,6 +55,6 @@
     "zoroaster": "^3.11.4"
   },
   "dependencies": {
-    "@artdeco/clean-stack": "^1.1.0"
+    "@artdeco/clean-stack": "^1.1.1"
   }
 }
